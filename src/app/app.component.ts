@@ -11,7 +11,4 @@ export class AppComponent {
 
   constructor(private router: Router) { }
 
-  navegarAInicioUser() {
-    this.router.navigate(['/app-inicio-usuario']); // 'otro' es la ruta que definiste en el enrutamiento
-  }
 }

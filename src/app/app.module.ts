@@ -5,16 +5,34 @@ import { AppComponent } from './app.component';
 import { InicioUsuarioComponent } from './usuario/inicio-usuario/inicio-usuario.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { PrincipalComponent } from './principal/principal.component';
+import { ModalInfoComponent } from './utiles/modal-info/modal-info.component';
+import { PerfilUsuarioComponent } from './usuario/perfil-usuario/perfil-usuario.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CrearUsuarioComponent } from './usuario/crear-usuario/crear-usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicioUsuarioComponent
+    InicioUsuarioComponent,
+    PrincipalComponent,
+    ModalInfoComponent,
+    PerfilUsuarioComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     AppRoutingModule,
+    HttpClientModule,
     BrowserModule,
-    RouterModule 
+    RouterModule ,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

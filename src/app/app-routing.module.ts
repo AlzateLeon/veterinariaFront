@@ -2,10 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { InicioUsuarioComponent } from './usuario/inicio-usuario/inicio-usuario.component';
+import { PrincipalComponent } from './principal/principal.component';
+import { PerfilUsuarioComponent } from './usuario/perfil-usuario/perfil-usuario.component';
 
 const routes: Routes = [
-    { path: '', component: AppComponent }, // Ruta de la pantalla de inicio
+    { path: '', redirectTo: '/inicio', pathMatch: 'full' },
+    { path: 'inicio', component: PrincipalComponent }, // Ruta de la pantalla de inicio
     { path: 'app-inicio-usuario', component: InicioUsuarioComponent }, // Ruta hacia otro componente
+
+    {
+      path: 'perfil-usuario', component: PerfilUsuarioComponent
+    }
   ];
   
   @NgModule({
