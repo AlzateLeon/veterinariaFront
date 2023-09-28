@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { InicioUsuarioComponent } from './usuario/inicio-usuario/inicio-usuario.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { PerfilUsuarioComponent } from './usuario/perfil-usuario/perfil-usuario.component';
+import { CrearUsuarioComponent } from './usuario/crear-usuario/crear-usuario.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -12,6 +13,9 @@ const routes: Routes = [
 
     {
       path: 'perfil-usuario', component: PerfilUsuarioComponent
+    },
+    {
+      path: 'crear-usuario', component: CrearUsuarioComponent
     }
   ];
   

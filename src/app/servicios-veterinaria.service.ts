@@ -18,7 +18,7 @@ export class ServiciosVeterinariaService {
     ) { }
 
   crearNuevoUsuario(creacionUsuarioIn: CreacionUsuarioIn): Observable<any> {
-    return this.http.post(`${this.baseUrl}/usuario`, creacionUsuarioIn);
+    return this.http.post(`${this.baseUrl}/usuario/crearUsuario`, creacionUsuarioIn);
   }
 
   openInfoModal(message: string): void {

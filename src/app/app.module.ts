@@ -21,7 +21,7 @@ import { CrearUsuarioComponent } from './usuario/crear-usuario/crear-usuario.com
     PrincipalComponent,
     ModalInfoComponent,
     PerfilUsuarioComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
   ],
   imports: [
     AppRoutingModule,
