@@ -27,7 +27,8 @@ export class InicioUsuarioComponent {
       
       this.userForm = this.form.group({
         usuario: [null],
-        password: [null]
+        password: [null],
+        correo: [null]
       })
      }
 
@@ -61,9 +62,9 @@ export class InicioUsuarioComponent {
   iniciarSesion(){
 
     // se valida si ya existe el usuario
-    if (this.userForm.get('usuario')?.value !== null &&
+    if (this.userForm.get('correo')?.value !== null &&
     this.userForm.get('password')?.value !== null){
-      this.serviciosVeterinariaService.consultarUsuarioExistente(this.userForm.get('usuario')?.value,
+      this.serviciosVeterinariaService.consultarUsuarioExistente(this.userForm.get('correo')?.value,
       this.userForm.get('password')?.value ).subscribe(
         resultado =>{
           if (resultado.exitoso){

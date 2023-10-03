@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
-  styleUrls: ['./principal.component.css',
+  styleUrls: ['../app.component.css',
     '../lib/flaticon/font/flaticon.css',
     '../lib/owlcarousel/assets/owl.carousel.min.css',
     '../lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css']
@@ -32,6 +32,14 @@ export class PrincipalComponent {
   navegarAservicios() {
     // Utiliza JavaScript o TypeScript para navegar a la sección de destino
     const seccionDestino = document.getElementById('seccionServicios');
+    if (seccionDestino) {
+      seccionDestino.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  navegarAContactenos() {
+    // Utiliza JavaScript o TypeScript para navegar a la sección de destino
+    const seccionDestino = document.getElementById('seccionContacto');
     if (seccionDestino) {
       seccionDestino.scrollIntoView({ behavior: 'smooth' });
     }

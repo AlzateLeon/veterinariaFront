@@ -1,12 +1,11 @@
-
-  /******* Bootstrap Theming ********/
+/******* Bootstrap Theming ********/
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
+ :root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -9526,6 +9525,14 @@ button.bg-dark:focus {
   color: #fff !important;
 }
 
+.text-red {
+  color: #e84a15 !important;
+}
+
+.text-black {
+  color: #050505 !important;
+}
+
 .text-primary {
   color: #ED6436 !important;
 }
@@ -9843,4 +9850,11 @@ h6 {
 .html {
   scroll-behavior: smooth !important;;
 }
+
+.flaticon-house::before {
+  margin: 0; /* Anula cualquier margen que se aplique por defecto */
+  font-size: 2em; /* Ajusta el tamaño según tus necesidades */
+}
+
+
 

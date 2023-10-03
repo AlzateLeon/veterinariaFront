@@ -28,8 +28,8 @@ export class ServiciosVeterinariaService {
     });
   }
 
-  consultarUsuarioExistente(user: string, contrasena: string): Observable<any> {
-    const url = `${this.baseUrl}/usuario?user=${user}&contrasena=${contrasena}`;
+  consultarUsuarioExistente(correo: string, contrasena: string): Observable<any> {
+    const url = `${this.baseUrl}/usuario?correo=${correo}&contrasena=${contrasena}`;
     return this.http.get(url);
   }
 }
