@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { CreacionUsuarioIn } from './dtos/creacion-usuario-in';
 import { ModalInfoComponent } from './utiles/modal-info/modal-info.component';
 import { MatDialog } from '@angular/material/dialog';
+import { InicioUsuarioComponent } from './usuario/inicio-usuario/inicio-usuario.component';
+import { UsuarioDTO } from './dtos/usuario.dto';
 
 
 @Injectable({
@@ -21,6 +23,14 @@ export class ServiciosVeterinariaService {
     return this.http.post(`${this.baseUrl}/usuario/crearUsuario`, creacionUsuarioIn);
   }
 
+  consultarUsuarioExistente(correo: string, contrasena: string): Observable<UsuarioDTO> {
+    const url = `${this.baseUrl}/usuario?correo=${correo}&contrasena=${contrasena}`;
+    return this.http.get<UsuarioDTO>(url);
+  }
+
+  /**
+   * Modal informativo
+   */
   openInfoModal(message: string): void {
     this.dialog.open(ModalInfoComponent, {
       width: '400px',
@@ -28,8 +38,15 @@ export class ServiciosVeterinariaService {
     });
   }
 
-  consultarUsuarioExistente(correo: string, contrasena: string): Observable<any> {
-    const url = `${this.baseUrl}/usuario?correo=${correo}&contrasena=${contrasena}`;
-    return this.http.get(url);
+  /**
+   * modal de ingresar a la app
+   */
+  openIngresarModal(): void {
+    this.dialog.open(InicioUsuarioComponent, {
+      width: '350px',
+      height: '550px',
+      data: {  },
+    });
   }
+
 }

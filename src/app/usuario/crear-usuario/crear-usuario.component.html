@@ -14,10 +14,7 @@
       <div class="col-lg-8 text-center text-lg-right">
         <div class="d-inline-flex align-items-center">
           <!-- <a href="" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Iniciar sesión</a> -->
-          <button
-            (click)="volver()"
-            class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-          >
+          <button (click)="volver()" class="btn btn-lg btn-primary px-3 d-none d-lg-block">
             Volver
           </button>
         </div>
@@ -35,13 +32,8 @@
           <div class="bg-primary py-5 px-4 px-sm-5">
             <label for="correo" class="text-white">Correo*</label>
             <div class="form-group">
-              <input
-                type="email"
-                class="form-control border-0 p-4"
-                placeholder="Tu Correo"
-                required="required"
-                formControlName="correo"
-              />
+              <input type="email" class="form-control border-0 p-4" placeholder="Tu Correo" required="required"
+                formControlName="correo" />
               <div *ngIf="submitted && f['correo'].errors" class="text-black">
                 {{ mensajeCorreo }}
               </div>
@@ -49,63 +41,34 @@
 
             <label for="usuario" class="text-white">Nombre</label>
             <div class="form-group">
-              <input
-                type="text"
-                class="form-control border-0 p-4"
-                placeholder="Tu Nombre"
-                formControlName="nombre"
-              />
+              <input type="text" class="form-control border-0 p-4" placeholder="Tu Nombre" formControlName="nombre" />
             </div>
 
             <label for="cedula" class="text-white">Cedula</label>
             <div class="form-group">
-              <input
-                type="text"
-                class="form-control border-0 p-4"
-                placeholder="Cedula"
-                formControlName="cedula"
-              />
+              <input type="text" class="form-control border-0 p-4" placeholder="Cedula" formControlName="cedula" />
             </div>
 
             <label for="contrasena" class="text-white">Contraseña*</label>
             <div class="form-group">
-              <input
-                type="password"
-                class="form-control border-0 p-4"
-                placeholder="Contraseña"
-                required="required"
-                formControlName="password"
-              />
+              <input type="password" class="form-control border-0 p-4" placeholder="Contraseña" required="required"
+                formControlName="password" />
               <div *ngIf="submitted && f['password'].errors" class="text-black">
                 La contraseña es obligatoria.
               </div>
             </div>
 
-            <label for="Ccontrasena" class="text-white"
-              >Confirmar contraseña*</label
-            >
+            <label for="Ccontrasena" class="text-white">Confirmar contraseña*</label>
             <div class="form-group">
-              <input
-                type="password"
-                class="form-control border-0 p-4"
-                placeholder="Confirmar contraseña"
-                required="required"
-                formControlName="Cpassword"
-              />
-              <div
-                *ngIf="submitted && f['Cpassword'].errors"
-                class="text-black"
-              >
+              <input type="password" class="form-control border-0 p-4" placeholder="Confirmar contraseña"
+                required="required" formControlName="Cpassword" />
+              <div *ngIf="submitted && f['Cpassword'].errors" class="text-black">
                 La confirmación de contraseña es obligatoria.
               </div>
             </div>
 
             <div>
-              <button
-                class="btn btn-dark btn-block border-0 py-3"
-                type="submit"
-                (click)="crearNuevoUsuario()"
-              >
+              <button class="btn btn-dark btn-block border-0 py-3" type="submit" (click)="crearNuevoUsuario()">
                 Registrarse
               </button>
             </div>
@@ -123,9 +86,7 @@
             <div class="col-sm-6">
               <div class="d-flex flex-column">
                 <div class="d-flex align-items-center mb-2">
-                  <h1
-                    class="flaticon-house font-weight-normal text-secondary m-0 mr-3"
-                  ></h1>
+                  <h1 class="flaticon-house font-weight-normal text-secondary m-0 mr-3"></h1>
                   <h5 class="text-truncate m-0">Veterinaria</h5>
                 </div>
                 <p>Tu mascota tambien necesita cuidados especiales</p>
@@ -134,9 +95,7 @@
             <div class="col-sm-6">
               <div class="d-flex flex-column">
                 <div class="d-flex align-items-center mb-2">
-                  <h1
-                    class="flaticon-food font-weight-normal text-secondary m-0 mr-3"
-                  ></h1>
+                  <h1 class="flaticon-food font-weight-normal text-secondary m-0 mr-3"></h1>
                   <h5 class="text-truncate m-0">Alimentos</h5>
                 </div>
                 <p>
@@ -147,9 +106,7 @@
             <div class="col-sm-6">
               <div class="d-flex flex-column">
                 <div class="d-flex align-items-center mb-2">
-                  <h1
-                    class="flaticon-grooming font-weight-normal text-secondary m-0 mr-3"
-                  ></h1>
+                  <h1 class="flaticon-grooming font-weight-normal text-secondary m-0 mr-3"></h1>
                   <h5 class="text-truncate m-0">Aseo de mascota</h5>
                 </div>
                 <p class="m-0">
@@ -160,9 +117,7 @@
             <div class="col-sm-6">
               <div class="d-flex flex-column">
                 <div class="d-flex align-items-center mb-2">
-                  <h1
-                    class="flaticon-toy font-weight-normal text-secondary m-0 mr-3"
-                  ></h1>
+                  <h1 class="flaticon-toy font-weight-normal text-secondary m-0 mr-3"></h1>
                   <h5 class="text-truncate m-0">Entretenimiento</h5>
                 </div>
                 <p class="m-0">
@@ -204,51 +159,25 @@
           <p><i class="fa fa-phone-alt mr-2"></i>+312 345 67890</p>
           <p><i class="fa fa-envelope mr-2"></i>info@gmail.com</p>
           <div class="d-flex justify-content-start mt-4">
-            <a
-              class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
-              style="width: 36px; height: 36px"
-              href="#"
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a
-              class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
-              style="width: 36px; height: 36px"
-              href="#"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a
-              class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
-              style="width: 36px; height: 36px"
-              href="#"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-            <a
-              class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
-              style="width: 36px; height: 36px"
-              href="#"
-              ><i class="fab fa-instagram"></i
-            ></a>
+            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px"
+              href="#"><i class="fab fa-twitter"></i></a>
+            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px"
+              href="#"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px"
+              href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px"
+              href="#"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
 
         <div class="col-md-4 mb-5">
           <h5 class="text-primary mb-4">Popular Links</h5>
           <div class="d-flex flex-column justify-content-start">
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Home</a
-            >
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>About Us</a
-            >
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Our Services</a
-            >
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Our Team</a
-            >
-            <a class="text-white" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Contact Us</a
-            >
+            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
+            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Services</a>
+            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Team</a>
+            <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
           </div>
         </div>
 
@@ -256,26 +185,13 @@
           <h5 class="text-primary mb-4">Ingresar</h5>
           <form action="">
             <div class="form-group">
-              <input
-                type="text"
-                class="form-control border-0"
-                placeholder="Usuario"
-                required="required"
-              />
+              <input type="text" class="form-control border-0" placeholder="Usuario" required="required" />
             </div>
             <div class="form-group">
-              <input
-                type="email"
-                class="form-control border-0"
-                placeholder="Contrasena"
-                required="required"
-              />
+              <input type="email" class="form-control border-0" placeholder="Contrasena" required="required" />
             </div>
             <div>
-              <button
-                class="btn btn-lg btn-primary btn-block border-0"
-                type="submit"
-              >
+              <button class="btn btn-lg btn-primary btn-block border-0" type="submit">
                 Ingresar
               </button>
             </div>

@@ -25,7 +25,6 @@ export class CrearUsuarioComponent {
   constructor(
     private router: Router,
     private form: FormBuilder,
-    // private modalInfoComponent: ModalInfoComponent,
     private serviciosVeterinariaService: ServiciosVeterinariaService
   ) {
     this.userForm = this.form.group({

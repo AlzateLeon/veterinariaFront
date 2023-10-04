@@ -1,88 +1,110 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CreacionUsuarioIn } from 'src/app/dtos/creacion-usuario-in';
+import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { ModalInfoComponent } from 'src/app/utiles/modal-info/modal-info.component';
 
 @Component({
   selector: 'app-inicio-usuario',
   templateUrl: './inicio-usuario.component.html',
-  styleUrls: ['./inicio-usuario.component.css']
+  styleUrls: ['../../app.component.css'],
 })
 export class InicioUsuarioComponent {
-
   public creacionUsuarioIn: CreacionUsuarioIn;
 
-  public userForm : FormGroup;
+  public userForm: FormGroup;
+
+  public submitted: boolean = false;
+
+  public mensajeCorreo: string;
+
+  public usuarioDTO: UsuarioDTO;
 
   //variables pantalla
-  usuario: string;
+  // usuario: string;
   contrasena: string;
 
-  constructor(private router: Router,
-    private form : FormBuilder,
+  constructor(
+    private router: Router,
+    private form: FormBuilder,
     // private modalInfoComponent: ModalInfoComponent,
-    private serviciosVeterinariaService: ServiciosVeterinariaService) {
-      
-      this.userForm = this.form.group({
-        usuario: [null],
-        password: [null],
-        correo: [null]
-      })
-     }
+    private serviciosVeterinariaService: ServiciosVeterinariaService,
+    public dialogRef: MatDialogRef<ModalInfoComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.userForm = this.form.group({
+      password: ['', Validators.required],
+      correo: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'
+          ),
+        ],
+      ],
+    });
+  }
+
+  closeDialog(): void {
+    this.dialogRef.close();
+  }
 
   volver() {
-    this.router.navigate(['/']);
+    this.closeDialog();
   }
 
-  crearNuevoUsuario(){
-    if (this.userForm.get('usuario')?.value !== null &&
-    this.userForm.get('password')?.value !== null){
+  iniciarSesion() {
+    this.submitted = true;
+    if (this.userForm.invalid) {
+      if (this.f['correo'].hasError('required')) {
+        this.mensajeCorreo = 'El correo es requerido.';
+      }
+      if (this.f['correo'].hasError('pattern')) {
+        this.mensajeCorreo = 'El correo no cumple con el formato correcto.';
+      }
+      return;
+    }
+    if (
+      this.userForm.get('correo')?.value !== null &&
+      this.userForm.get('password')?.value !== null
+    ) {
+      this.serviciosVeterinariaService
+        .consultarUsuarioExistente(
+          this.userForm.get('correo')?.value,
+          this.userForm.get('password')?.value
+        )
+        .subscribe((respuesta) => {
 
-      console.log(this.userForm.get('usuario')?.value,  this.userForm.get('password')?.value);
-
-      this.creacionUsuarioIn = new CreacionUsuarioIn();
-      this.creacionUsuarioIn.nombre = this.userForm.get('usuario')?.value;
-      this.creacionUsuarioIn.password = this.userForm.get('password')?.value
-
-      this.serviciosVeterinariaService.crearNuevoUsuario(this.creacionUsuarioIn).subscribe(
-        respuesta =>{
-          if (!respuesta.exitoso){
-            this.serviciosVeterinariaService.openInfoModal(respuesta.mensaje);
-          }else{
-            this.serviciosVeterinariaService.openInfoModal("Exito");
+          this.usuarioDTO = respuesta;
+          console.log("enviado1", this.usuarioDTO);
+          console.log("enviado2", respuesta);
+          
+          
+          if (!this.usuarioDTO.exitoso) {
+            this.serviciosVeterinariaService.openInfoModal(this.usuarioDTO.mensaje);
+            this.submitted = false;
+          } else {
+            this.limpiarCampos();
+            this.closeDialog();
+            this.submitted = false;
+            this.router.navigate(['/perfil-usuario'], {
+              queryParams: { user: JSON.stringify(this.usuarioDTO) },
+            });
           }
-          this.limpiarCampos();
-        }
-      );
+        });
     }
   }
 
-  iniciarSesion(){
-
-    // se valida si ya existe el usuario
-    if (this.userForm.get('correo')?.value !== null &&
-    this.userForm.get('password')?.value !== null){
-      this.serviciosVeterinariaService.consultarUsuarioExistente(this.userForm.get('correo')?.value,
-      this.userForm.get('password')?.value ).subscribe(
-        resultado =>{
-          if (resultado.exitoso){
-            // se redirige al perfil del this.usuario
-            this.router.navigate(['/perfil-usuario'], { queryParams: { user: resultado.user } });
-          }else{
-              this.serviciosVeterinariaService.openInfoModal(resultado.mensaje);
-          }
-          this.limpiarCampos();
-        }
-      )
-    }
+  limpiarCampos() {
+    this.userForm.get('usuario')?.setValue('');
+    this.userForm.get('password')?.setValue('');
   }
 
-  limpiarCampos(){
-    this.userForm.get('usuario')?.setValue("");
-    this.userForm.get('password')?.setValue("");
+  public get f() {
+    return this.userForm.controls;
   }
-
-
 }

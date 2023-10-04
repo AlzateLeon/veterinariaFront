@@ -9856,5 +9856,27 @@ h6 {
   font-size: 2em; /* Ajusta el tamaño según tus necesidades */
 }
 
+.modal {
+  background-color: rgba(0, 0, 0, 2);
+}
+
+
+.izquierda {
+  flex: 0 0 30%; /* Establecer el ancho del 30% sin que sea flexible */
+  background-color: #f0f0f0; /* Opcional: Agregar color de fondo */
+}
+
+.derecha {
+  flex: 0 0 70%; /* Establecer el ancho del 70% sin que sea flexible */
+  background-color: #e0e0e0; /* Opcional: Agregar color de fondo */
+}
+
+.contenedor {
+  display: flex; /* Utilizar Flexbox */
+}
+
+
+
+
 
 

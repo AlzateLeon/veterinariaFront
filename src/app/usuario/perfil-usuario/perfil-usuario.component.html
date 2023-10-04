@@ -1,2 +1,46 @@
-<p>perfil-usuario works!</p>
-<p>Usuario : {{userName}}</p>
+<!-- Topbar Start -->
+<div class="container-fluid bg-dark">
+    <div class="row py-3 px-lg-5">
+        <div class="col-lg-4">
+            <a href="" class="navbar-brand d-none d-lg-block">
+                <h1 class="m-0 display-5 text-capitalize">
+                    <span class="text-primary">Virtual</span>
+                    <span class="text-white">Pet</span>
+                </h1>
+            </a>
+        </div>
+        <div class="col-lg-8 text-center text-lg-right">
+            <div class="d-inline-flex align-items-center">
+                <button (click)="volver()" class="btn btn-lg btn-primary px-3 d-none d-lg-block">
+                    Cerrar sesión
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<!-- Topbar End -->
+
+<!-- perfil -->
+
+<div class="container-fluid bg-light">
+
+    <div class="contenedor">
+        <div class="izquierda">
+            <h3>Información de perfil -></h3>
+            <div class="col-md-12 text-center">
+                <img src="../../../assets/img/p.png" alt="Imagen de ejemplo" width="300">
+            </div>
+
+        </div>
+        <div class="derecha">
+            <div class="perfil-usuario">
+                <h1>{{ usuarioDTO.nombre }} <i class="fa fa-light fa-paw"></i></h1>
+                <h3>Correo Electrónico: {{ usuarioDTO.correo }}</h3>
+                <h3>Cédula: {{ usuarioDTO.cedula }}</h3>
+                <h3>Tipo de Usuario: {{ usuarioDTO.tipoUsuarioEnum }}</h3>
+                <!-- <button (click)="editarPerfil()">Editar Perfil</button> -->
+            </div>
+        </div>
+    </div>
+</div>
