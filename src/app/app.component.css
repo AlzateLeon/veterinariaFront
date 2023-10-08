@@ -9862,20 +9862,81 @@ h6 {
 
 
 .izquierda {
-  flex: 0 0 30%; /* Establecer el ancho del 30% sin que sea flexible */
+  flex: 0 0 25%; /* Establecer el ancho del 30% sin que sea flexible */
+  background-color: #f0f0f0; /* Opcional: Agregar color de fondo */
+}
+
+.centro {
+  flex: 0 0 5%; /* Establecer el ancho del 30% sin que sea flexible */
   background-color: #f0f0f0; /* Opcional: Agregar color de fondo */
 }
 
 .derecha {
   flex: 0 0 70%; /* Establecer el ancho del 70% sin que sea flexible */
   background-color: #e0e0e0; /* Opcional: Agregar color de fondo */
+ 
+}
+
+.margen-derecha {
+  margin-top: 10px; /* Margen superior de 20px */
+  margin-left: 10px; /* Margen izquierdo de 30px */
 }
 
 .contenedor {
   display: flex; /* Utilizar Flexbox */
 }
 
+.menu-lateral ul {
+  list-style-type: none; /* Elimina los puntos de la lista */
+  padding: 0; /* Elimina el relleno predeterminado de la lista */
+}
 
+.menu-lateral li {
+  /* border: 1px solid #ccc; Agrega un borde sólido de 1px con color gris claro */
+  margin: 5px 0; /* Agrega un margen superior e inferior para separar los elementos */
+  padding: 10px; /* Agrega relleno dentro de cada elemento */
+}
+
+.menu-lateral li a {
+  text-decoration: none; /* Elimina la decoración de subrayado de los enlaces */
+  color: #333; /* Cambia el color del texto de los enlaces */
+  display: block; /* Hace que los enlaces ocupen todo el ancho del elemento li */
+}
+
+/* .card {
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+}
+
+.card-text {
+  font-size: 1rem;
+} */
+
+/* Estilo de la tarjeta de mascota */
+.mascota-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones */
+}
+
+/* Estilo cuando se pasa el ratón sobre la tarjeta */
+.mascota-card:hover {
+  background-color: #f2f2f2;
+  transform: scale(1.05); /* Escala un poco más grande */
+}
+
+/* Estilo cuando se hace clic en la tarjeta */
+.mascota-card.clicked {
+  background-color: #e0e0e0;
+  transform: scale(0.95); /* Escala un poco más pequeña */
+}
 
 
 

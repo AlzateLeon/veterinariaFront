@@ -27,19 +27,91 @@
 
     <div class="contenedor">
         <div class="izquierda">
-            <h3>Información de perfil -></h3>
-            <div class="col-md-12 text-center">
-                <img src="../../../assets/img/p.png" alt="Imagen de ejemplo" width="300">
-            </div>
+            <div class="menu-lateral">
+                <!-- <div class="col-md-12 text-center">
+                    <img src="../../../assets/img/p.png" alt="Imagen de ejemplo" width="300">
+                </div> -->
 
+                <ul>
+                    <li>
+                        <button (click)="mostrarInformacion()" class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                            style="width: 100%;">
+                            Información del perfil
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button (click)="mostrarEditar()" class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                            style="width: 100%;">
+                            Editar perfil
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button (click)="mostrarMascotas()" class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                            style="width: 100%;">
+                            Mis mascotas
+                            <i class="fa fa-paw" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button (click)="mostrarAgenda()" class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                            style="width: 100%;">
+                            Agenda de mascotas
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                    <!-- Agrega más opciones de menú según sea necesario -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="centro">
         </div>
         <div class="derecha">
-            <div class="perfil-usuario">
-                <h1>{{ usuarioDTO.nombre }} <i class="fa fa-light fa-paw"></i></h1>
-                <h3>Correo Electrónico: {{ usuarioDTO.correo }}</h3>
-                <h3>Cédula: {{ usuarioDTO.cedula }}</h3>
-                <h3>Tipo de Usuario: {{ usuarioDTO.tipoUsuarioEnum }}</h3>
-                <!-- <button (click)="editarPerfil()">Editar Perfil</button> -->
+            <div class="margen-derecha">
+                <div *ngIf="mostrarInformacionB">
+                    <h1>{{ usuarioDTO.nombre }} <i class="fa fa-light fa-paw"></i></h1>
+                    <h3>Correo Electrónico: {{ usuarioDTO.correo }}</h3>
+                    <h3>Cédula: {{ usuarioDTO.cedula }}</h3>
+                    <!-- <h3>Tipo de Usuario: {{ usuarioDTO.tipoUsuarioEnum }}</h3> -->
+                    <h3>Mascotas registradas: 1</h3>
+                    <h3>Citas pendientes: 0</h3>
+                    <!-- <button (click)="editarPerfil()">Editar Perfil</button> -->
+                </div>
+
+                <div *ngIf="mostrarEditaB">
+                    <h2>Editar Información</h2>
+                    <form id="editar-form" [formGroup]="editForm">
+                        <div class="form-group">
+                            <h4 for="nombre">Nombre</h4>
+                            <input type="text" id="nombre" name="nombre"  formControlName="nombre"
+                                class="form-control" style="width: 60%;" [(ngModel)]="NombreEditar">
+                        </div>
+                        <div class="form-group">
+                            <h4 for="correo">Correo</h4>
+                            <input type="email" id="correo" name="correo"  formControlName="correo"
+                                class="form-control" style="width: 60%;" [(ngModel)]="CorreoEditar">
+                                <div *ngIf="submittedEdit && f['correo'].errors" class="text-black">
+                                    {{ mensajeCorreo }}
+                                </div>
+                        </div>
+                        <button (click)="editarUsuario()" class="btn btn-lg btn-primary px-3 d-none d-lg-block">
+                            Guardar Cambios
+                        </button>
+                        <!-- <button click="editarUsuario()" class="btn btn-primary">Guardar Cambios</button> -->
+                    </form>
+                </div>
+
+                <div *ngIf="mostrarMascotasB">
+                    <h2>Mis mascotas</h2>
+                    <app-lista-mascotas></app-lista-mascotas>
+                </div>
+
+                <div *ngIf="mostrarAgendabB">
+                    <p>Agenda</p>
+                </div>
+
             </div>
         </div>
     </div>

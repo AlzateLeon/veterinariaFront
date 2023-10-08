@@ -3,8 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CreacionUsuarioIn } from 'src/app/dtos/creacion-usuario-in';
+import { ConsultaMascotasUsuarioOutDTO } from 'src/app/dtos/mascota/consulta-mascotas-usuario-out.dto';
 import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
+import { MascotaService } from 'src/app/servicios/mascota.service';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { ModalInfoComponent } from 'src/app/utiles/modal-info/modal-info.component';
 
 @Component({
@@ -23,6 +26,8 @@ export class InicioUsuarioComponent {
 
   public usuarioDTO: UsuarioDTO;
 
+  public consultaMascotasUsuarioOutDTO: ConsultaMascotasUsuarioOutDTO;
+
   //variables pantalla
   // usuario: string;
   contrasena: string;
@@ -33,6 +38,8 @@ export class InicioUsuarioComponent {
     // private modalInfoComponent: ModalInfoComponent,
     private serviciosVeterinariaService: ServiciosVeterinariaService,
     public dialogRef: MatDialogRef<ModalInfoComponent>,
+    public usuarioService: UsuarioService,
+    private mascotaService: MascotaService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.userForm = this.form.group({
@@ -78,22 +85,38 @@ export class InicioUsuarioComponent {
           this.userForm.get('password')?.value
         )
         .subscribe((respuesta) => {
-
           this.usuarioDTO = respuesta;
-          console.log("enviado1", this.usuarioDTO);
-          console.log("enviado2", respuesta);
-          
-          
+
           if (!this.usuarioDTO.exitoso) {
-            this.serviciosVeterinariaService.openInfoModal(this.usuarioDTO.mensaje);
+            this.serviciosVeterinariaService.openInfoModal(
+              this.usuarioDTO.mensaje
+            );
             this.submitted = false;
           } else {
-            this.limpiarCampos();
-            this.closeDialog();
-            this.submitted = false;
-            this.router.navigate(['/perfil-usuario'], {
-              queryParams: { user: JSON.stringify(this.usuarioDTO) },
-            });
+            this.mascotaService
+              .consultarMascotasUsuario(this.usuarioDTO.idUser)
+              .subscribe((resultado) => {
+
+                if (resultado.exitoso) {
+                  this.consultaMascotasUsuarioOutDTO = resultado;
+                  //this.mascotas = this.consultaMascotasUsuarioOutDTO.mascotas;
+                  this.limpiarCampos();
+                  this.closeDialog();
+                  this.submitted = false;
+                  this.usuarioService.setUsuarioData(this.usuarioDTO);
+                  this.mascotaService.setMascotasData(this.consultaMascotasUsuarioOutDTO);
+                  this.router.navigate(['/perfil-usuario']);
+
+                } else {
+                  this.serviciosVeterinariaService.openInfoModal(
+                    this.consultaMascotasUsuarioOutDTO.mensaje
+                  );
+                }
+              });
+
+            // , {
+            //   queryParams: { user: JSON.stringify(this.usuarioDTO) },
+            // });
           }
         });
     }

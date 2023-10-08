@@ -13,6 +13,7 @@ import { PerfilUsuarioComponent } from './usuario/perfil-usuario/perfil-usuario.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CrearUsuarioComponent } from './usuario/crear-usuario/crear-usuario.component';
+import { ListaMascotasComponent } from './mascota/lista-mascotas/lista-mascotas.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CrearUsuarioComponent } from './usuario/crear-usuario/crear-usuario.com
     ModalInfoComponent,
     PerfilUsuarioComponent,
     CrearUsuarioComponent,
+    ListaMascotasComponent,
   ],
   imports: [
     AppRoutingModule,

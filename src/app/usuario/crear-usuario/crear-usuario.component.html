@@ -39,14 +39,20 @@
               </div>
             </div>
 
-            <label for="usuario" class="text-white">Nombre</label>
+            <label for="usuario" class="text-white">Nombre completo*</label>
             <div class="form-group">
               <input type="text" class="form-control border-0 p-4" placeholder="Tu Nombre" formControlName="nombre" />
+              <div *ngIf="submitted && f['nombre'].errors" class="text-black">
+                El nombre es obligatorio.
+              </div>
             </div>
 
-            <label for="cedula" class="text-white">Cedula</label>
+            <label for="cedula" class="text-white">Cédula*</label>
             <div class="form-group">
               <input type="text" class="form-control border-0 p-4" placeholder="Cedula" formControlName="cedula" />
+              <div *ngIf="submitted && f['Cedula'].errors" class="text-black">
+                La cédula es obligatoria.
+              </div>
             </div>
 
             <label for="contrasena" class="text-white">Contraseña*</label>
