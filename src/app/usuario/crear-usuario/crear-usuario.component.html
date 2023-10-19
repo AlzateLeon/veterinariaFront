@@ -50,7 +50,7 @@
             <label for="cedula" class="text-white">Cédula*</label>
             <div class="form-group">
               <input type="text" class="form-control border-0 p-4" placeholder="Cedula" formControlName="cedula" />
-              <div *ngIf="submitted && f['Cedula'].errors" class="text-black">
+              <div *ngIf="submitted && f['cedula'].errors" class="text-black">
                 La cédula es obligatoria.
               </div>
             </div>
@@ -206,4 +206,8 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="loader" *ngIf="loading">
+  <i class="fas fa-spinner fa-spin"></i> Cargando...
 </div>

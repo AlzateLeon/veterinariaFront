@@ -93,30 +93,33 @@ export class InicioUsuarioComponent {
             );
             this.submitted = false;
           } else {
-            this.mascotaService
-              .consultarMascotasUsuario(this.usuarioDTO.idUser)
-              .subscribe((resultado) => {
-
-                if (resultado.exitoso) {
-                  this.consultaMascotasUsuarioOutDTO = resultado;
-                  //this.mascotas = this.consultaMascotasUsuarioOutDTO.mascotas;
-                  this.limpiarCampos();
-                  this.closeDialog();
-                  this.submitted = false;
-                  this.usuarioService.setUsuarioData(this.usuarioDTO);
-                  this.mascotaService.setMascotasData(this.consultaMascotasUsuarioOutDTO);
-                  this.router.navigate(['/perfil-usuario']);
-
-                } else {
-                  this.serviciosVeterinariaService.openInfoModal(
-                    this.consultaMascotasUsuarioOutDTO.mensaje
-                  );
-                }
-              });
-
-            // , {
-            //   queryParams: { user: JSON.stringify(this.usuarioDTO) },
-            // });
+            //validamos si esta activo el user
+            if (this.usuarioDTO.activo) {
+              this.mascotaService
+                .consultarMascotasUsuario(this.usuarioDTO.idUser)
+                .subscribe((resultado) => {
+                  if (resultado.exitoso) {
+                    this.consultaMascotasUsuarioOutDTO = resultado;
+                    //this.mascotas = this.consultaMascotasUsuarioOutDTO.mascotas;
+                    this.limpiarCampos();
+                    this.closeDialog();
+                    this.submitted = false;
+                    this.usuarioService.setUsuarioData(this.usuarioDTO);
+                    this.mascotaService.setMascotasData(
+                      this.consultaMascotasUsuarioOutDTO
+                    );
+                    this.router.navigate(['/perfil-usuario']);
+                  } else {
+                    this.serviciosVeterinariaService.openInfoModal(
+                      this.consultaMascotasUsuarioOutDTO.mensaje
+                    );
+                  }
+                });
+            } else {
+              this.serviciosVeterinariaService.openInfoModal(
+                'El usuario an no ha sido activado'
+              );
+            }
           }
         });
     }

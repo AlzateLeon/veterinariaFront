@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditarUsuarioMascotaInDTO } from 'src/app/dtos/editar-usuario-mascota-in.dto';
 import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
+import { MascotaService } from 'src/app/servicios/mascota.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 
 @Component({
@@ -33,11 +34,12 @@ export class PerfilUsuarioComponent {
   public NombreEditar: string;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private form: FormBuilder,
+    private route: ActivatedRoute,
     public usuarioService: UsuarioService,
-    private serviciosVeterinariaService: ServiciosVeterinariaService
+    private mascotaService: MascotaService,
+    private serviciosVeterinariaService: ServiciosVeterinariaService,
   ) {
     // Recupera el valor del parámetro 'id' de la URL
     // this.route.queryParams.subscribe((params) => {
@@ -148,4 +150,5 @@ export class PerfilUsuarioComponent {
   public get f() {
     return this.editForm.controls;
   }
+
 }

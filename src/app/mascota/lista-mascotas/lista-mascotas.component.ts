@@ -1,37 +1,39 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { ConsultaMascotasUsuarioOutDTO } from 'src/app/dtos/mascota/consulta-mascotas-usuario-out.dto';
 import { MascotaDTO } from 'src/app/dtos/mascota/mascota.dto';
+import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { MascotaService } from 'src/app/servicios/mascota.service';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
 
 @Component({
   selector: 'app-lista-mascotas',
   templateUrl: './lista-mascotas.component.html',
   styleUrls: ['../../app.component.css'],
 })
-export class ListaMascotasComponent implements AfterViewInit{
+export class ListaMascotasComponent implements AfterViewInit {
   public mascotas: MascotaDTO[] = []; // Debe obtenerse la lista de mascotas del usuario
 
   public consultaMascotasUsuarioOutDTO: ConsultaMascotasUsuarioOutDTO;
 
+  public usuarioDTO: UsuarioDTO;
+
+  public showModal: boolean = false;
+
   constructor(
     private cdRef: ChangeDetectorRef,
+    public usuarioService: UsuarioService,
     private mascotaService: MascotaService,
     private serviciosVeterinariaService: ServiciosVeterinariaService
   ) {
-    
+    this.usuarioDTO = usuarioService.getUsuarioData();
   }
   ngAfterViewInit(): void {
     this.mascotaService.mascotasData$.subscribe((mascotas) => {
-
-      console.log("mascota", mascotas);
-      
       this.consultaMascotasUsuarioOutDTO = mascotas;
-      console.log("mascota2", this.consultaMascotasUsuarioOutDTO);
       this.mascotas = this.consultaMascotasUsuarioOutDTO.listaMascotas;
-      console.log("mascota3", this.mascotas);
 
-      this.cdRef.detectChanges(); 
+      this.cdRef.detectChanges();
     });
   }
 
@@ -51,5 +53,26 @@ export class ListaMascotasComponent implements AfterViewInit{
   onMascotaClick(mascota: MascotaDTO) {
     mascota.clicked = !mascota.clicked;
     console.log(mascota);
+  }
+
+  recargarListaMascotas() {
+    this.mascotaService
+      .consultarMascotasUsuario(this.usuarioDTO.idUser)
+      .subscribe((resultado) => {
+        if (resultado.exitoso) {
+          this.consultaMascotasUsuarioOutDTO = resultado;
+          this.mascotas = this.consultaMascotasUsuarioOutDTO.listaMascotas;
+          this.cdRef.detectChanges();
+        } else {
+          this.serviciosVeterinariaService.openInfoModal(
+            this.consultaMascotasUsuarioOutDTO.mensaje
+          );
+        }
+      });
+  }
+
+  agregarMascota() {
+    this.mascotaService.openModalAgregarMascota();
+    // this.showModal = true;
   }
 }

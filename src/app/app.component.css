@@ -9938,6 +9938,45 @@ h6 {
   transform: scale(0.95); /* Escala un poco más pequeña */
 }
 
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  text-align: center;
+}
 
+.loader i {
+  font-size: 2em;
+}
 
+.loader p {
+  margin-top: 10px;
+}
+
+/* Estilo para la capa de fondo semitransparente */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente (ajusta el valor alpha para la opacidad deseada) */
+  z-index: 1000; /* Asegura que esté en la parte superior */
+}
+
+/* Estilo para el contenedor del símbolo de carga */
+.loader-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1001; /* Debe estar por encima de la capa de fondo */
+}
 

@@ -8,4 +8,5 @@ export class UsuarioDTO extends ResultadoDTO{
   tipoUsuarioEnum: string;
   correo: string;
   cedula: string;
+  activo: boolean;
 }

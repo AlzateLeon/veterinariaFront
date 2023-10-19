@@ -6,6 +6,7 @@ import { ModalInfoComponent } from './utiles/modal-info/modal-info.component';
 import { MatDialog } from '@angular/material/dialog';
 import { InicioUsuarioComponent } from './usuario/inicio-usuario/inicio-usuario.component';
 import { UsuarioDTO } from './dtos/usuario.dto';
+import { CreacionUsuarioOutDTO } from './dtos/creacion-usuario-out.dto';
 
 
 @Injectable({
@@ -13,14 +14,14 @@ import { UsuarioDTO } from './dtos/usuario.dto';
 })
 export class ServiciosVeterinariaService {
 
-  private baseUrl = 'http://localhost:8080'; // Reemplaza con la URL de tu backend
+  private baseUrl = 'http://localhost:8080/veterinaria'; // Reemplaza con la URL de tu backend
 
   constructor(private http: HttpClient,
-    private dialog: MatDialog
+    private dialog: MatDialog,
     ) { }
 
-  crearNuevoUsuario(creacionUsuarioIn: CreacionUsuarioIn): Observable<any> {
-    return this.http.post(`${this.baseUrl}/usuario/crearUsuario`, creacionUsuarioIn);
+  crearNuevoUsuario(creacionUsuarioIn: CreacionUsuarioIn): Observable<CreacionUsuarioOutDTO> {
+    return this.http.post<CreacionUsuarioOutDTO>(`${this.baseUrl}/usuario/crearUsuario`, creacionUsuarioIn);
   }
 
   consultarUsuarioExistente(correo: string, contrasena: string): Observable<UsuarioDTO> {

@@ -5,6 +5,7 @@ import { InicioUsuarioComponent } from './usuario/inicio-usuario/inicio-usuario.
 import { PrincipalComponent } from './principal/principal.component';
 import { PerfilUsuarioComponent } from './usuario/perfil-usuario/perfil-usuario.component';
 import { CrearUsuarioComponent } from './usuario/crear-usuario/crear-usuario.component';
+import { ValidarMailComponent } from './usuario/validar-mail/validar-mail.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -16,7 +17,10 @@ const routes: Routes = [
     },
     {
       path: 'crear-usuario', component: CrearUsuarioComponent
-    }
+    },
+    {
+      path: 'validar-mail/:token/:idUser', component: ValidarMailComponent
+    },
   ];
   
   @NgModule({

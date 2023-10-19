@@ -32,6 +32,8 @@
                     <img src="../../../assets/img/p.png" alt="Imagen de ejemplo" width="300">
                 </div> -->
 
+                <h1 style="text-align: center;">Bienvenido!</h1>
+
                 <ul>
                     <li>
                         <button (click)="mostrarInformacion()" class="btn btn-lg btn-primary px-3 d-none d-lg-block"
@@ -74,10 +76,8 @@
                     <h1>{{ usuarioDTO.nombre }} <i class="fa fa-light fa-paw"></i></h1>
                     <h3>Correo Electrónico: {{ usuarioDTO.correo }}</h3>
                     <h3>Cédula: {{ usuarioDTO.cedula }}</h3>
-                    <!-- <h3>Tipo de Usuario: {{ usuarioDTO.tipoUsuarioEnum }}</h3> -->
                     <h3>Mascotas registradas: 1</h3>
                     <h3>Citas pendientes: 0</h3>
-                    <!-- <button (click)="editarPerfil()">Editar Perfil</button> -->
                 </div>
 
                 <div *ngIf="mostrarEditaB">
@@ -99,17 +99,15 @@
                         <button (click)="editarUsuario()" class="btn btn-lg btn-primary px-3 d-none d-lg-block">
                             Guardar Cambios
                         </button>
-                        <!-- <button click="editarUsuario()" class="btn btn-primary">Guardar Cambios</button> -->
                     </form>
                 </div>
 
-                <div *ngIf="mostrarMascotasB">
-                    <h2>Mis mascotas</h2>
+                <div class="row" *ngIf="mostrarMascotasB">
                     <app-lista-mascotas></app-lista-mascotas>
                 </div>
 
                 <div *ngIf="mostrarAgendabB">
-                    <p>Agenda</p>
+                    <h2>Agenda</h2>
                 </div>
 
             </div>

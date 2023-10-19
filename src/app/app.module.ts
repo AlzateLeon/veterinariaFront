@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CrearUsuarioComponent } from './usuario/crear-usuario/crear-usuario.component';
 import { ListaMascotasComponent } from './mascota/lista-mascotas/lista-mascotas.component';
+import { AgregarMascotaComponent } from './mascota/agregar-mascota/agregar-mascota.component';
+import { ValidarMailComponent } from './usuario/validar-mail/validar-mail.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ListaMascotasComponent } from './mascota/lista-mascotas/lista-mascotas.
     PerfilUsuarioComponent,
     CrearUsuarioComponent,
     ListaMascotasComponent,
+    AgregarMascotaComponent,
+    ValidarMailComponent,
   ],
   imports: [
     AppRoutingModule,
