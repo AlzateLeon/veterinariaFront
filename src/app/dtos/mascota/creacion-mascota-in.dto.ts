@@ -4,4 +4,5 @@ export class creacionMascotaInDTO{
     edad: number;
     tipoMascota: string;
     raza: string;
+    imagenMascota: string;
 }

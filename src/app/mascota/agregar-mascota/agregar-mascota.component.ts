@@ -20,20 +20,21 @@ export class AgregarMascotaComponent {
   public submitted: boolean = false;
 
   opcionSeleccionada: string = 'opcion1'; // Valor predeterminado
-  public tiposMascota: string[] = ['PERRO', 'GATO', 'PEZ', 'CABALLO'];
+  public tiposMascota: string[] = ['PERRO', 'GATO', 'PEZ', 'PAJARO'];
 
   public usuarioDTO: UsuarioDTO;
 
-  @Output() modalClosed = new EventEmitter<void>();
+  private imagenMascota: string;
 
   constructor(
     private router: Router,
     private form: FormBuilder,
     public usuarioService: UsuarioService,
     private mascotaService: MascotaService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<ModalInfoComponent>,
     private serviciosVeterinariaService: ServiciosVeterinariaService,
+    // modal
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<AgregarMascotaComponent>,
   ) {
     this.mascotaForm = this.form.group({
       nombre: ['', Validators.required],
@@ -65,11 +66,11 @@ export class AgregarMascotaComponent {
     inDTO.tipoMascota = this.mascotaForm.get('tipo')?.value;
     inDTO.edad = this.mascotaForm.get('edad')?.value;
     inDTO.idDueno = this.usuarioDTO.idUser;
+    inDTO.imagenMascota = this.imagenMascota;
 
     this.mascotaService.crearMascota(inDTO).subscribe((resultado) => {
       if (resultado.exitoso) {
         this.serviciosVeterinariaService.openInfoModal('¡Mascota agregada!');
-        this.modalClosed.emit();
         this.volver();
         return;
       }
@@ -87,6 +88,10 @@ export class AgregarMascotaComponent {
           'imagePreview'
         ) as HTMLImageElement;
         imagePreview.src = e.target?.result as string;
+
+        this.imagenMascota = e.target?.result as string;
+        console.log(this.imagenMascota);
+        
       };
 
       reader.readAsDataURL(selectedFile);

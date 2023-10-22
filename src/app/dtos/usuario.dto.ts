@@ -9,4 +9,7 @@ export class UsuarioDTO extends ResultadoDTO{
   correo: string;
   cedula: string;
   activo: boolean;
+  cantidadMascotas: number;
+  imagenUser: string;
+
 }

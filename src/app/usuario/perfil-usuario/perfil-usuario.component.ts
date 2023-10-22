@@ -32,6 +32,9 @@ export class PerfilUsuarioComponent {
 
   public CorreoEditar: string;
   public NombreEditar: string;
+  public imagen: string;
+
+
 
   constructor(
     private router: Router,
@@ -39,7 +42,7 @@ export class PerfilUsuarioComponent {
     private route: ActivatedRoute,
     public usuarioService: UsuarioService,
     private mascotaService: MascotaService,
-    private serviciosVeterinariaService: ServiciosVeterinariaService,
+    private serviciosVeterinariaService: ServiciosVeterinariaService
   ) {
     // Recupera el valor del parámetro 'id' de la URL
     // this.route.queryParams.subscribe((params) => {
@@ -52,6 +55,7 @@ export class PerfilUsuarioComponent {
     console.log('recibido', this.usuarioDTO);
     this.CorreoEditar = this.usuarioDTO.correo;
     this.NombreEditar = this.usuarioDTO.nombre;
+    this.imagen = this.usuarioDTO.imagenUser;
 
     this.editForm = this.form.group({
       nombre: [null],
@@ -126,6 +130,7 @@ export class PerfilUsuarioComponent {
     editarIn.correo = this.editForm.get('correo')?.value;
     editarIn.nombre = this.editForm.get('nombre')?.value;
     editarIn.idUsuario = this.usuarioDTO.idUser;
+    editarIn.imagen = this.imagen;
 
     //se edita el user
     this.usuarioService.editarUsuario(editarIn).subscribe((resultado) => {
@@ -135,12 +140,14 @@ export class PerfilUsuarioComponent {
         );
 
         //se recupera el usuario editado
-        this.serviciosVeterinariaService.consultarUsuarioExistente(
-          this.editForm.get('correo')?.value,
-          this.usuarioDTO.contrasena
-        ).subscribe(resultado =>{
-          this.usuarioDTO = resultado;
-        });
+        this.serviciosVeterinariaService
+          .consultarUsuarioExistente(
+            this.editForm.get('correo')?.value,
+            this.usuarioDTO.contrasena
+          )
+          .subscribe((resultado) => {
+            this.usuarioDTO = resultado;
+          });
       } else {
         this.serviciosVeterinariaService.openInfoModal(resultado.mensaje);
       }
@@ -151,4 +158,23 @@ export class PerfilUsuarioComponent {
     return this.editForm.controls;
   }
 
+  handleFileInput(event: any) {
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const imagePreview = document.getElementById(
+          'imagePreview'
+        ) as HTMLImageElement;
+        imagePreview.src = e.target?.result as string;
+
+        this.imagen = e.target?.result as string;
+        this.usuarioDTO.imagenUser = this.imagen;
+        console.log(this.imagen);
+      };
+
+      reader.readAsDataURL(selectedFile);
+    }
+  }
 }

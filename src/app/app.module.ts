@@ -40,7 +40,8 @@ import { ValidarMailComponent } from './usuario/validar-mail/validar-mail.compon
     MatDialogModule,
     
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

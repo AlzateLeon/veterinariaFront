@@ -86,6 +86,8 @@ export class InicioUsuarioComponent {
         )
         .subscribe((respuesta) => {
           this.usuarioDTO = respuesta;
+          console.log("usuario encontrado", this.usuarioDTO);
+          
 
           if (!this.usuarioDTO.exitoso) {
             this.serviciosVeterinariaService.openInfoModal(

@@ -1,10 +1,12 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ConsultaMascotasUsuarioOutDTO } from 'src/app/dtos/mascota/consulta-mascotas-usuario-out.dto';
 import { MascotaDTO } from 'src/app/dtos/mascota/mascota.dto';
 import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { MascotaService } from 'src/app/servicios/mascota.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { AgregarMascotaComponent } from '../agregar-mascota/agregar-mascota.component';
 
 @Component({
   selector: 'app-lista-mascotas',
@@ -21,6 +23,7 @@ export class ListaMascotasComponent implements AfterViewInit {
   public showModal: boolean = false;
 
   constructor(
+    public dialog: MatDialog,
     private cdRef: ChangeDetectorRef,
     public usuarioService: UsuarioService,
     private mascotaService: MascotaService,
@@ -28,10 +31,13 @@ export class ListaMascotasComponent implements AfterViewInit {
   ) {
     this.usuarioDTO = usuarioService.getUsuarioData();
   }
+  
   ngAfterViewInit(): void {
     this.mascotaService.mascotasData$.subscribe((mascotas) => {
       this.consultaMascotasUsuarioOutDTO = mascotas;
       this.mascotas = this.consultaMascotasUsuarioOutDTO.listaMascotas;
+      console.log(this.mascotas);
+      
 
       this.cdRef.detectChanges();
     });
@@ -63,6 +69,11 @@ export class ListaMascotasComponent implements AfterViewInit {
           this.consultaMascotasUsuarioOutDTO = resultado;
           this.mascotas = this.consultaMascotasUsuarioOutDTO.listaMascotas;
           this.cdRef.detectChanges();
+
+          this.mascotaService.setMascotasData(
+            this.consultaMascotasUsuarioOutDTO
+          );
+          
         } else {
           this.serviciosVeterinariaService.openInfoModal(
             this.consultaMascotasUsuarioOutDTO.mensaje
@@ -72,7 +83,13 @@ export class ListaMascotasComponent implements AfterViewInit {
   }
 
   agregarMascota() {
-    this.mascotaService.openModalAgregarMascota();
+    //this.mascotaService.openModalAgregarMascota();
     // this.showModal = true;
+    const dialogoModal = this.dialog.open(AgregarMascotaComponent);
+
+    dialogoModal.afterClosed().subscribe(e => {
+        this.recargarListaMascotas();
+    });
   }
+
 }

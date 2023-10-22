@@ -9866,6 +9866,11 @@ h6 {
   background-color: #f0f0f0; /* Opcional: Agregar color de fondo */
 }
 
+.izquierda2 {
+  flex: 0 0 70%; /* Establecer el ancho del 30% sin que sea flexible */
+  background-color: #f0f0f0; /* Opcional: Agregar color de fondo */
+}
+
 .centro {
   flex: 0 0 5%; /* Establecer el ancho del 30% sin que sea flexible */
   background-color: #f0f0f0; /* Opcional: Agregar color de fondo */
@@ -9875,6 +9880,11 @@ h6 {
   flex: 0 0 70%; /* Establecer el ancho del 70% sin que sea flexible */
   background-color: #e0e0e0; /* Opcional: Agregar color de fondo */
  
+}
+
+.derecha2 {
+  flex: 0 0 25%; /* Establecer el ancho del 70% sin que sea flexible */
+  background-color: #e0e0e0; /* Opcional: Agregar color de fondo */
 }
 
 .margen-derecha {
@@ -9924,6 +9934,7 @@ h6 {
   border-radius: 5px;
   cursor: pointer; /* Cambia el cursor al pasar el ratón */
   transition: background-color 0.3s, transform 0.3s; /* Transiciones */
+  margin-left: 30px;
 }
 
 /* Estilo cuando se pasa el ratón sobre la tarjeta */
@@ -9978,5 +9989,12 @@ h6 {
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 1001; /* Debe estar por encima de la capa de fondo */
+}
+
+.modal-container {
+  width: 80%; /* Puedes ajustar el porcentaje de acuerdo a tus necesidades */
+  max-width: 400px; /* Puedes ajustar un valor máximo para el ancho */
+  max-height: 550px;
+  margin: 0 auto; /* Centra horizontalmente el modal */
 }
 

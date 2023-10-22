@@ -73,33 +73,54 @@
         <div class="derecha">
             <div class="margen-derecha">
                 <div *ngIf="mostrarInformacionB">
-                    <h1>{{ usuarioDTO.nombre }} <i class="fa fa-light fa-paw"></i></h1>
-                    <h3>Correo Electrónico: {{ usuarioDTO.correo }}</h3>
-                    <h3>Cédula: {{ usuarioDTO.cedula }}</h3>
-                    <h3>Mascotas registradas: 1</h3>
-                    <h3>Citas pendientes: 0</h3>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h1>{{ usuarioDTO.nombre }} <i class="fa fa-light fa-paw"></i></h1>
+                            <h3>Correo: {{ usuarioDTO.correo }}</h3>
+                            <h3>Cédula: {{ usuarioDTO.cedula }}</h3>
+                            <h3>Mascotas registradas: {{usuarioDTO.cantidadMascotas}}</h3>
+                            <h3>Citas pendientes: 0</h3>
+                        </div>
+                        <div class="col-md-5">
+                            <img src="{{ usuarioDTO.imagenUser }}" class="card-img-top"
+                                alt="Imagen de {{ usuarioDTO.nombre }}" style="width: 300px; height: 300px;">
+                        </div>
+                    </div>
                 </div>
 
                 <div *ngIf="mostrarEditaB">
-                    <h2>Editar Información</h2>
-                    <form id="editar-form" [formGroup]="editForm">
-                        <div class="form-group">
-                            <h4 for="nombre">Nombre</h4>
-                            <input type="text" id="nombre" name="nombre"  formControlName="nombre"
-                                class="form-control" style="width: 60%;" [(ngModel)]="NombreEditar">
-                        </div>
-                        <div class="form-group">
-                            <h4 for="correo">Correo</h4>
-                            <input type="email" id="correo" name="correo"  formControlName="correo"
-                                class="form-control" style="width: 60%;" [(ngModel)]="CorreoEditar">
-                                <div *ngIf="submittedEdit && f['correo'].errors" class="text-black">
-                                    {{ mensajeCorreo }}
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h2>Editar Información</h2>
+                            <form id="editar-form" [formGroup]="editForm">
+                                <div class="form-group">
+                                    <h4 for="nombre">Nombre</h4>
+                                    <input type="text" id="nombre" name="nombre" formControlName="nombre"
+                                        class="form-control" style="width: 100%;" [(ngModel)]="NombreEditar">
                                 </div>
+                                <div class="form-group">
+                                    <h4 for="correo">Correo</h4>
+                                    <input type="email" id="correo" name="correo" formControlName="correo"
+                                        class="form-control" style="width: 100%;" [(ngModel)]="CorreoEditar">
+                                    <div *ngIf="submittedEdit && f['correo'].errors" class="text-black">
+                                        {{ mensajeCorreo }}
+                                    </div>
+                                </div>
+                            </form>
+                            <button (click)="editarUsuario()" class="btn btn-lg btn-primary px-3 d-none d-lg-block">
+                                Guardar Cambios
+                            </button>
                         </div>
-                        <button (click)="editarUsuario()" class="btn btn-lg btn-primary px-3 d-none d-lg-block">
-                            Guardar Cambios
-                        </button>
-                    </form>
+                        <div class="col-md-5">
+                            <img src="{{ usuarioDTO.imagenUser }}" class="card-img-top" id="imagePreview"
+                                alt="Imagen de {{ usuarioDTO.nombre }}" style="width: 300px; height: 300px;">
+                            <label for="fileInput" class="custom-file-upload">
+                                <input type="file" id="fileInput" (change)="handleFileInput($event)">
+                                Cambiar foto
+                            </label>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="row" *ngIf="mostrarMascotasB">

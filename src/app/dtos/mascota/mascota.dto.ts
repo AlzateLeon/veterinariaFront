@@ -6,4 +6,5 @@ export class MascotaDTO {
   raza: string;
   tipoMascota: string;
   clicked: boolean = false;
+  imagenMascota: string;
 }
