@@ -15,12 +15,12 @@ import { ModalInfoComponent } from 'src/app/utiles/modal-info/modal-info.compone
   styleUrls: ['../../app.component.css'],
 })
 export class AgregarMascotaComponent {
+
   public mascotaForm: FormGroup;
 
   public submitted: boolean = false;
 
-  opcionSeleccionada: string = 'opcion1'; // Valor predeterminado
-  public tiposMascota: string[] = ['PERRO', 'GATO', 'PEZ', 'PAJARO'];
+  public tiposMascota: string[] = ['PERRO', 'GATO', 'PEZ', 'AVE', 'ROEDOR'];
 
   public usuarioDTO: UsuarioDTO;
 

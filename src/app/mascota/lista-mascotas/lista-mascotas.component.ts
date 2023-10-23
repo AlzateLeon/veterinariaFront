@@ -7,6 +7,7 @@ import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.servi
 import { MascotaService } from 'src/app/servicios/mascota.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { AgregarMascotaComponent } from '../agregar-mascota/agregar-mascota.component';
+import { CarnetMascotaComponent } from '../carnet-mascota/carnet-mascota.component';
 
 @Component({
   selector: 'app-lista-mascotas',
@@ -14,6 +15,7 @@ import { AgregarMascotaComponent } from '../agregar-mascota/agregar-mascota.comp
   styleUrls: ['../../app.component.css'],
 })
 export class ListaMascotasComponent implements AfterViewInit {
+
   public mascotas: MascotaDTO[] = []; // Debe obtenerse la lista de mascotas del usuario
 
   public consultaMascotasUsuarioOutDTO: ConsultaMascotasUsuarioOutDTO;
@@ -58,7 +60,13 @@ export class ListaMascotasComponent implements AfterViewInit {
 
   onMascotaClick(mascota: MascotaDTO) {
     mascota.clicked = !mascota.clicked;
-    console.log(mascota);
+    this.mascotaService.setMascotaData(mascota);
+
+    const dialogoModal = this.dialog.open(CarnetMascotaComponent);
+
+    // dialogoModal.afterClosed().subscribe(e => {
+    //     this.recargarListaMascotas();
+    // });
   }
 
   recargarListaMascotas() {

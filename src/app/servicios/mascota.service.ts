@@ -12,8 +12,14 @@ import { ResultadoDTO } from '../dtos/resultado.dto';
   providedIn: 'root',
 })
 export class MascotaService {
+
+  //varias mascotas
   private mascotasData = new BehaviorSubject<any>(null);
   mascotasData$ = this.mascotasData.asObservable();
+
+  //una sola mascota
+  private mascotaData = new BehaviorSubject<any>(null);
+  mascotaData$ = this.mascotaData.asObservable();
 
   private baseUrl = 'http://localhost:8080/veterinaria/mascota';
 
@@ -38,6 +44,14 @@ export class MascotaService {
 
   getMascotasData() {
     return this.mascotasData.getValue();
+  }
+
+  setMascotaData(data: any) {
+    this.mascotaData.next(data);
+  }
+
+  getMascotaData() {
+    return this.mascotaData.getValue();
   }
 
   /**

@@ -7,4 +7,5 @@ export class MascotaDTO {
   tipoMascota: string;
   clicked: boolean = false;
   imagenMascota: string;
+  observacion: string;
 }

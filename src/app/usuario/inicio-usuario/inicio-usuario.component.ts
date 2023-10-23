@@ -119,7 +119,7 @@ export class InicioUsuarioComponent {
                 });
             } else {
               this.serviciosVeterinariaService.openInfoModal(
-                'El usuario an no ha sido activado'
+                'El usuario aún no ha sido activado'
               );
             }
           }

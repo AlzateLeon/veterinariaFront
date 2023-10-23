@@ -16,6 +16,7 @@ import { CrearUsuarioComponent } from './usuario/crear-usuario/crear-usuario.com
 import { ListaMascotasComponent } from './mascota/lista-mascotas/lista-mascotas.component';
 import { AgregarMascotaComponent } from './mascota/agregar-mascota/agregar-mascota.component';
 import { ValidarMailComponent } from './usuario/validar-mail/validar-mail.component';
+import { CarnetMascotaComponent } from './mascota/carnet-mascota/carnet-mascota.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ValidarMailComponent } from './usuario/validar-mail/validar-mail.compon
     ListaMascotasComponent,
     AgregarMascotaComponent,
     ValidarMailComponent,
+    CarnetMascotaComponent,
   ],
   imports: [
     AppRoutingModule,

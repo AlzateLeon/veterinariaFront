@@ -34,8 +34,6 @@ export class PerfilUsuarioComponent {
   public NombreEditar: string;
   public imagen: string;
 
-
-
   constructor(
     private router: Router,
     private form: FormBuilder,
