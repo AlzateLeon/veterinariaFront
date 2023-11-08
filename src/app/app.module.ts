@@ -17,6 +17,9 @@ import { ListaMascotasComponent } from './mascota/lista-mascotas/lista-mascotas.
 import { AgregarMascotaComponent } from './mascota/agregar-mascota/agregar-mascota.component';
 import { ValidarMailComponent } from './usuario/validar-mail/validar-mail.component';
 import { CarnetMascotaComponent } from './mascota/carnet-mascota/carnet-mascota.component';
+import { CarnetDetrasComponent } from './mascota/carnet-detras/carnet-detras.component';
+import { AgendaMascotasComponent } from './mascota/agenda-mascotas/agenda-mascotas.component';
+import { AgregarCitaComponent } from './mascota/agenda-mascotas/agregar-cita/agregar-cita.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { CarnetMascotaComponent } from './mascota/carnet-mascota/carnet-mascota.
     AgregarMascotaComponent,
     ValidarMailComponent,
     CarnetMascotaComponent,
+    CarnetDetrasComponent,
+    AgendaMascotasComponent,
+    AgregarCitaComponent,
   ],
   imports: [
     AppRoutingModule,

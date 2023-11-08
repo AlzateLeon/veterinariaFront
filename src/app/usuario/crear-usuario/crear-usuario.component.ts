@@ -89,7 +89,7 @@ export class CrearUsuarioComponent {
         // this.creacionUsuarioIn.userName = this.userForm.get('usuario')?.value;
         this.creacionUsuarioIn.tipoUsuarioEnum = 'DUENO_MASCOTA';
         this.loading = true; // Mostrar el símbolo de carga
-        this.showOverlay = true; // Mostrar la capa de fondo semitransparente
+        //this.showOverlay = true; // Mostrar la capa de fondo semitransparente
 
         this.serviciosVeterinariaService
           .crearNuevoUsuario(this.creacionUsuarioIn)
@@ -103,10 +103,10 @@ export class CrearUsuarioComponent {
               this.loading = false; // Ocultar el símbolo de carga
               this.showOverlay = false; // Ocultar la capa de fondo semitransparente
             } else {
+
               let envioIn: EnvioCorreoInDTO = new EnvioCorreoInDTO();
               envioIn.correo = this.userForm.get('correo')?.value;
               envioIn.idUser = this.creacionUsuarioOutDTO.idUser;
-
               this.usuarioService
                 .mandarCorreoValidacion(envioIn)
                 .subscribe((res) => {

@@ -3,9 +3,9 @@
     </h2>
 </div>
 
-<mat-dialog-content class="modal-dialog modal-lg">
+<mat-dialog-content>
     <div class="container">
-        <form id="login-form" [formGroup]="carnetForm">
+        <form id="carnet-form" [formGroup]="carnetForm">
             <div class="row">
                 <div class="col-md-4">
                     <img src="{{mascota.imagenMascota}}" class="card-img-top" alt="Imagen de {{ mascota.nombre }}"
@@ -20,39 +20,42 @@
 
                     <div class="form-group row">
                         <div class="col-md-12" style="margin-bottom: 5px;">
-                            <label style="margin-right: 10px;" for="nombre">Nombre</label>
+                            <label style="margin-right: 10px; font-size: x-large;" for="nombre">Nombre</label>
                             <input class="input-right-aligned" type="text" id="nombre" name="nombre"
-                                formControlName="nombre" required size="30" [(ngModel)]="nombreEditar">
+                                formControlName="nombre" size="30" style="width: 60%;">
+
                         </div>
 
                         <div class="col-md-12" style="margin-bottom: 5px;">
-                            <label style="margin-right: 10px;" for="edad">Edad</label>
+                            <label style="margin-right: 10px; font-size: x-large;" for="edad">Edad</label>
                             <input class="input-right-aligned" type="text" id="edad" name="edad" formControlName="edad"
-                                required size="30" [(ngModel)]="edadEditar">
+                                required size="30" style="width: 60%;">
                         </div>
 
                         <div class="col-md-12" style="margin-bottom: 5px;">
-                            <label style="margin-right: 10px;" for="raza">Raza</label>
+                            <label style="margin-right: 10px; font-size: x-large;" for="raza">Raza</label>
                             <input class="input-right-aligned" type="text" id="raza" name="raza" formControlName="raza"
-                                required size="30" [(ngModel)]="razaEditar">
+                                required size="30" style="width: 60%;">
                         </div>
 
                         <div class="col-md-12" style="margin-bottom: 5px;">
-                            <label style="margin-right: 10px;" for="tipo">Tipo Mascota</label>
+                            <label style="margin-right: 10px; font-size: x-large;" for="tipo">Tipo Mascota</label>
                             <input class="input-right-aligned" type="text" id="tipo" name="tipo" formControlName="tipo"
-                                required size="30" [(ngModel)]="tipoEditar">
+                                required size="30" style="width: 60%;">
                         </div>
 
                         <div class="col-md-12">
-                            <label style="margin-right: 10px;" for="observacion">Observaciones</label>
+                            <label style="margin-right: 10px; font-size: x-large;"
+                                for="observacion">Observaciones</label>
                             <textarea class="input-right-aligned" id="observacion" name="observacion"
-                                formControlName="observacion" required [(ngModel)]="observacionEditar"></textarea>
+                                formControlName="observacion" required [(ngModel)]="observacionEditar"
+                                style="width: 60%;">
+                            </textarea>
                         </div>
                     </div>
-                    <!-- <h3>Observaciones: {{ mascota.observacion }}</h3> -->
                 </div>
                 <div class="col-md-1">
-                    <button class="round-button">
+                    <button class="round-button" (click)="voltearTarjeta()">
                         <i class="fa fa-arrow-circle-right"></i>
                     </button>
                 </div>
@@ -62,7 +65,7 @@
         </form>
     </div>
     <div class="row" style="justify-content: center;">
-        <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block" (click)="volver()">Volver</button>
+        <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block" (click)="volver()">Cerrar</button>
         <div style="width: 20px;"></div>
         <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block"
             (click)="actualizarMascota()">Actualizar</button>

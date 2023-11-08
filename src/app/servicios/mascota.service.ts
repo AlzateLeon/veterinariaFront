@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AgregarMascotaComponent } from '../mascota/agregar-mascota/agregar-mascota.component';
 import { creacionMascotaInDTO } from '../dtos/mascota/creacion-mascota-in.dto';
 import { ResultadoDTO } from '../dtos/resultado.dto';
+import { EditarMascotaInDTO } from '../dtos/mascota/editar-mascota-in.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -52,6 +53,10 @@ export class MascotaService {
 
   getMascotaData() {
     return this.mascotaData.getValue();
+  }
+
+  editarMascota(editarMascotaInDTO: EditarMascotaInDTO): Observable<ResultadoDTO> {
+    return this.http.post<ResultadoDTO>(`${this.baseUrl}/editarMascota`, editarMascotaInDTO);
   }
 
   /**

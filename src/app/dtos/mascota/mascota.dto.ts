@@ -2,7 +2,7 @@ export class MascotaDTO {
   id: number;
   nombre: string;
   dueno: string;
-  edad: string;
+  edad: number;
   raza: string;
   tipoMascota: string;
   clicked: boolean = false;

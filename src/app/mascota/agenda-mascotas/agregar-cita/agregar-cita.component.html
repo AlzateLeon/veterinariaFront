@@ -1,0 +1,38 @@
+<div class="container-fluid bg-dark">
+    <h2 style="text-align: center; height:50px; vertical-align: middle;" class="text-white">Agregar cita
+    </h2>
+</div>
+
+<mat-dialog-content>
+    <div class="container">
+        <form id="cita-form" [formGroup]="citaForm">
+
+            <div class="form-group row">
+                <!-- Mascota -->
+                <div class="col-md-12">
+                    <label for="mascota">
+                        Mascota*
+                    </label>
+                </div>
+                <div class="col-md-12">
+                    <select formControlName="mascota" style="width: 100%;" id="mascota">
+                        <option *ngFor="let opcion of nombresMascotas" [value]="opcion">{{ opcion }}</option>
+                    </select>
+                    <div *ngIf="submitted && f['mascota'].errors" class="text-black">
+                        La mascota es obligatoria.
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="row" style="justify-content: center;">
+        <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block" (click)="volver()">
+            Cerrar
+        </button>
+        <div style="width: 20px;"></div>
+        <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block" (click)="crearCita()">Agendar
+        </button>
+    </div>
+
+</mat-dialog-content>
