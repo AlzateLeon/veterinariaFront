@@ -1,3 +1,52 @@
-<p>agenda-mascotas works!</p>
-<button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block" (click)="irCrear()">Agregar cita
-</button>
+<div class="container-fluid row">
+    <div class="col-md-9">
+        <h2>Agenda de citas</h2>
+    </div>
+    <div class="col-lg-3 text-lg-right">
+        <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block" (click)="irCrear()">
+            Agregar cita
+        </button>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                <thead>
+                    <!-- style="width: 10;" -->
+                    <th>
+                        <strong> Fecha Aplicación </strong>
+                    </th>
+                    <th>
+                        <strong> Mascota </strong>
+                    </th>
+
+                    <th>
+                        <strong> Tipo cita </strong>
+                    </th>
+
+                    <th>
+                        <strong> Estado </strong>
+                    </th>
+                </thead>
+            </table>
+            <tbody>
+                <tr *ngFor="let cita of citas">
+                    <td>
+                        {{ cita.fecha }}
+                    </td>
+                    <td>
+                        {{ cita.nombreMascota }}
+                    </td>
+
+                    <td>
+                        {{ cita.tipoCitaMascotaEnum }}
+                    </td>
+
+                    <td>
+                        {{ cita.estadoCitaMedicaEnum }}
+                    </td>
+                </tr>
+            </tbody>
+        </div>
+    </div>
+</div>

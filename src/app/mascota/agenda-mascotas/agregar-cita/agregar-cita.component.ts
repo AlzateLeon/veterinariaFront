@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
@@ -20,10 +20,13 @@ export class AgregarCitaComponent {
   public citaForm: FormGroup;
   public submitted: boolean = false;
 
+  public tiposCita: String[] = ["Vacunación", "Corte pelo", "Cita general"];
   public mascotas: MascotaDTO[] = [];
   public nombresMascotas: string[] = [];
 
   public consultaMascotasUsuarioOutDTO: ConsultaMascotasUsuarioOutDTO;
+
+  fechaSeleccionada: string;
 
   constructor(
     public dialog: MatDialog,
@@ -35,9 +38,9 @@ export class AgregarCitaComponent {
     public dialogRef: MatDialogRef<AgregarCitaComponent>
   ) {
     this.citaForm = this.form.group({
-      mascota: [''],
-      fecha: [''],
-      tipoCita: [''],
+      mascota: ['', Validators.required],
+      fecha: ['', Validators.required],
+      tipoCita: ['', Validators.required],
     });
 
     //se recupera la lista de mascotas
@@ -60,7 +63,12 @@ export class AgregarCitaComponent {
    * Metodo encargado de crear una cita asociada a una mascota
    */
   crearCita(){
-
+    console.log(this.form);
+    this.submitted = true;
+    if (this.citaForm.invalid){
+      return;
+    }
+    
   }
 
   volver() {

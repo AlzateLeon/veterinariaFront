@@ -24,6 +24,38 @@
                 </div>
             </div>
 
+            <!-- fecha cita -->
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label for="fecha">
+                        Fecha*
+                    </label>
+                </div>
+                <div class="col-md-12">
+                    <input type="date" id="fecha" name="fecha" [(ngModel)]="fechaSeleccionada">
+                    <div *ngIf="submitted && f['fecha'].errors" class="text-black">
+                        La fecha es obligatoria.
+                    </div>
+                </div>
+            </div>
+
+             <!-- Tipo cita -->
+             <div class="form-group row">
+                <div class="col-md-12">
+                    <label for="tipoCita">
+                        Tipo cita*
+                    </label>
+                </div>
+                <div class="col-md-12">
+                    <select formControlName="tipoCita" style="width: 100%;" id="tipoCita">
+                        <option *ngFor="let opcionCita of tiposCita" [value]="opcionCita">{{ opcionCita }}</option>
+                    </select>
+                    <div *ngIf="submitted && f['tipoCita'].errors" class="text-black">
+                        El tipo es obligatorio.
+                    </div>
+                </div>
+            </div>
+
         </form>
     </div>
     <div class="row" style="justify-content: center;">
