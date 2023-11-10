@@ -8,45 +8,62 @@
         </button>
     </div>
 
-    <div class="row">
+    <div class="row scrollable-section">
         <div class="col-md-12">
             <table>
                 <thead>
                     <!-- style="width: 10;" -->
-                    <th>
-                        <strong> Fecha Aplicación </strong>
+                    <th style="text-align: left;">
+                        <strong> Fecha Cita </strong>
                     </th>
-                    <th>
+                    <th style="text-align: left;">
                         <strong> Mascota </strong>
                     </th>
 
-                    <th>
+                    <th style="text-align: left;">
                         <strong> Tipo cita </strong>
                     </th>
 
-                    <th>
+                    <th style="text-align: left;">
                         <strong> Estado </strong>
                     </th>
+
+                    <th style="text-align: left;">
+                        <strong> Acciones </strong>
+                    </th>
                 </thead>
+
+                <tbody>
+                    <tr *ngFor="let cita of citas">
+                        <td style="text-align: left;">
+                            {{ cita.fecha }}
+                        </td>
+                        <td style="text-align: left;">
+                            {{ cita.nombreMascota }}
+                        </td>
+
+                        <td style="text-align: left;">
+                            {{ cita.tipoCitaMascotaEnum }}
+                        </td>
+
+                        <td style="text-align: left;">
+                            {{ cita.estadoCitaMedicaEnum }}
+                        </td>
+
+                        <td style="text-align: left;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i title="Consulta" class="fa fa-search icono-azul" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-md-6">
+                                    <i title="Cancelar" class="fa fa-ban icono-rojo" aria-hidden="true"></i>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
-            <tbody>
-                <tr *ngFor="let cita of citas">
-                    <td>
-                        {{ cita.fecha }}
-                    </td>
-                    <td>
-                        {{ cita.nombreMascota }}
-                    </td>
-
-                    <td>
-                        {{ cita.tipoCitaMascotaEnum }}
-                    </td>
-
-                    <td>
-                        {{ cita.estadoCitaMedicaEnum }}
-                    </td>
-                </tr>
-            </tbody>
         </div>
     </div>
 </div>

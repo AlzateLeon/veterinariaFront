@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-12">
                     <select formControlName="mascota" style="width: 100%;" id="mascota">
-                        <option *ngFor="let opcion of nombresMascotas" [value]="opcion">{{ opcion }}</option>
+                        <option *ngFor="let opcion of nombresMascotas" [value]="opcion.id">{{ opcion.valor }}</option>
                     </select>
                     <div *ngIf="submitted && f['mascota'].errors" class="text-black">
                         La mascota es obligatoria.
@@ -32,7 +32,7 @@
                     </label>
                 </div>
                 <div class="col-md-12">
-                    <input type="date" id="fecha" name="fecha" [(ngModel)]="fechaSeleccionada">
+                    <input type="datetime-local" id="fecha" name="fecha" formControlName="fecha">
                     <div *ngIf="submitted && f['fecha'].errors" class="text-black">
                         La fecha es obligatoria.
                     </div>

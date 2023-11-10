@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AgregarCitaComponent } from './agregar-cita/agregar-cita.component';
-import { VacunaService } from 'src/app/servicios/vacuna.service';
 import { CitaMedicaService } from 'src/app/servicios/cita.medica.service'
 import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
@@ -26,12 +25,21 @@ export class AgendaMascotasComponent {
 
   constructor(
     public dialog: MatDialog,
-    public citaMedicaService: CitaMedicaService,
+    private cdRef: ChangeDetectorRef,
     public usuarioService: UsuarioService,
+    public citaMedicaService: CitaMedicaService,
     private serviciosVeterinariaService: ServiciosVeterinariaService
   ) {
 
     this.usuarioDTO = usuarioService.getUsuarioData();
+    this.consultarCitasUsuario();
+  }
+
+  ngAfterViewInit(): void {
+    this.cdRef.detectChanges();
+  }
+
+  consultarCitasUsuario(){
     this.citaMedicaService.consultarCitasUsuario(this.usuarioDTO.idUser).subscribe(res =>{
       this.consultasCitasUserOutDTO = res;
 
@@ -58,9 +66,7 @@ export class AgendaMascotasComponent {
     const dialogoModal = this.dialog.open(AgregarCitaComponent);
 
     dialogoModal.afterClosed().subscribe(e => {
-        //this.recargarListaCitas();
-        console.log("cita agendada");
-        
+        this.consultarCitasUsuario();
     });
   }
 }

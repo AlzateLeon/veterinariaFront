@@ -10033,5 +10033,12 @@ td, th {
 .scrollable-section {
   height: 400px; /* Establece la altura máxima de la sección */
   overflow-y: auto; /* Habilita el scroll vertical cuando el contenido excede la altura */
-  border: 1px solid #ccc; /* Opcional: agrega un borde para mayor claridad */
+}
+
+.icono-azul {
+  color: #117a8b; /* Cambia 'blue' al color que desees */
+}
+
+.icono-rojo {
+  color: #dc3545; /* Cambia 'blue' al color que desees */
 }
