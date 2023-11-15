@@ -11,5 +11,6 @@ export class UsuarioDTO extends ResultadoDTO{
   activo: boolean;
   cantidadMascotas: number;
   imagenUser: string;
+  citasPendientes: number;
 
 }

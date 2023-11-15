@@ -23,10 +23,13 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 export class AgregarCitaComponent {
 
   public citaForm: FormGroup;
+
   public submitted: boolean = false;
 
   public tiposCita: String[] = ["Vacunación", "Baño"];
+
   public mascotas: MascotaDTO[] = [];
+  
   public nombresMascotas: ObjetoListaDTO[] = [];
 
   public consultaMascotasUsuarioOutDTO: ConsultaMascotasUsuarioOutDTO;

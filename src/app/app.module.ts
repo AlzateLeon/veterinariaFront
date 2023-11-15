@@ -20,6 +20,10 @@ import { CarnetMascotaComponent } from './mascota/carnet-mascota/carnet-mascota.
 import { CarnetDetrasComponent } from './mascota/carnet-detras/carnet-detras.component';
 import { AgendaMascotasComponent } from './mascota/agenda-mascotas/agenda-mascotas.component';
 import { AgregarCitaComponent } from './mascota/agenda-mascotas/agregar-cita/agregar-cita.component';
+import { ModalCancelarCitaComponent } from './mascota/agenda-mascotas/modal-cancelar-cita/modal-cancelar-cita.component';
+import { ModalConsultarCitaComponent } from './mascota/agenda-mascotas/modal-consultar-cita/modal-consultar-cita.component';
+import { EditarUsuarioComponent } from './usuario/perfil-usuario/editar-usuario/editar-usuario.component';
+import { InformacionPerfilUsuarioComponent } from './usuario/perfil-usuario/informacion-perfil-usuario/informacion-perfil-usuario.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,10 @@ import { AgregarCitaComponent } from './mascota/agenda-mascotas/agregar-cita/agr
     CarnetDetrasComponent,
     AgendaMascotasComponent,
     AgregarCitaComponent,
+    ModalCancelarCitaComponent,
+    ModalConsultarCitaComponent,
+    EditarUsuarioComponent,
+    InformacionPerfilUsuarioComponent,
   ],
   imports: [
     AppRoutingModule,

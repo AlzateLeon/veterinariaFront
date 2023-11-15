@@ -5,6 +5,7 @@ import { CreacionCitaInDTO } from '../dtos/cita/creacion-cita-in.dto';
 import { ResultadoDTO } from '../dtos/resultado.dto';
 import { Observable } from 'rxjs';
 import { ConsultasCitasUserOutDTO } from '../dtos/cita/consultas-citas-user-out.dto';
+import { CitaMedicaDTO } from '../dtos/cita/cita-medica.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +27,9 @@ export class CitaMedicaService {
   consultarCitasUsuario(iduser: number): Observable<ConsultasCitasUserOutDTO> {
     const url = `${this.baseUrl}/consultarCitasUsuario?idUser=${iduser}`;
     return this.http.get<ConsultasCitasUserOutDTO>(url);
+  }
+
+  cancelarCita(cita: CitaMedicaDTO): Observable<ResultadoDTO> {
+    return this.http.post<ResultadoDTO>(`${this.baseUrl}/cancelarCita`, cita);
   }
 }

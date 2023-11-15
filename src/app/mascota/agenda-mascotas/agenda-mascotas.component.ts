@@ -1,12 +1,14 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AgregarCitaComponent } from './agregar-cita/agregar-cita.component';
-import { CitaMedicaService } from 'src/app/servicios/cita.medica.service'
+import { CitaMedicaService } from 'src/app/servicios/cita.medica.service';
 import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { ConsultasCitasUserOutDTO } from 'src/app/dtos/cita/consultas-citas-user-out.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { CitaMedicaDTO } from 'src/app/dtos/cita/cita-medica.dto';
+import { ModalCancelarCitaComponent } from './modal-cancelar-cita/modal-cancelar-cita.component';
+import { ModalConsultarCitaComponent } from './modal-consultar-cita/modal-consultar-cita.component';
 
 @Component({
   selector: 'app-agenda-mascotas',
@@ -14,7 +16,6 @@ import { CitaMedicaDTO } from 'src/app/dtos/cita/cita-medica.dto';
   styleUrls: ['../../app.component.css'],
 })
 export class AgendaMascotasComponent {
-
   public submitted: boolean = false;
 
   public usuarioDTO: UsuarioDTO;
@@ -30,7 +31,6 @@ export class AgendaMascotasComponent {
     public citaMedicaService: CitaMedicaService,
     private serviciosVeterinariaService: ServiciosVeterinariaService
   ) {
-
     this.usuarioDTO = usuarioService.getUsuarioData();
     this.consultarCitasUsuario();
   }
@@ -39,34 +39,56 @@ export class AgendaMascotasComponent {
     this.cdRef.detectChanges();
   }
 
-  consultarCitasUsuario(){
-    this.citaMedicaService.consultarCitasUsuario(this.usuarioDTO.idUser).subscribe(res =>{
-      this.consultasCitasUserOutDTO = res;
+  consultarCitasUsuario() {
+    this.citaMedicaService
+      .consultarCitasUsuario(this.usuarioDTO.idUser)
+      .subscribe((res) => {
+        this.consultasCitasUserOutDTO = res;
 
-      if (this.consultasCitasUserOutDTO.exitoso){
-
-        if (this.consultasCitasUserOutDTO.listaCitasMedicas != null && 
-          this.consultasCitasUserOutDTO.listaCitasMedicas.length > 0){
+        if (this.consultasCitasUserOutDTO.exitoso) {
+          if (
+            this.consultasCitasUserOutDTO.listaCitasMedicas != null &&
+            this.consultasCitasUserOutDTO.listaCitasMedicas.length > 0
+          ) {
             this.citas = this.consultasCitasUserOutDTO.listaCitasMedicas;
-            console.log(this.citas);    
-          }else{
-            console.log("aun no tienes citas");
-            
+            console.log(this.citas);
+          } else {
+            console.log('aun no tienes citas');
           }
-        
-      }else{
-        this.serviciosVeterinariaService.openInfoModal(
-          this.consultasCitasUserOutDTO.mensaje
-        );
-      }
+        } else {
+          this.serviciosVeterinariaService.openInfoModal(
+            this.consultasCitasUserOutDTO.mensaje
+          );
+        }
+      });
+  }
+
+  irCrear() {
+    const dialogoModal = this.dialog.open(AgregarCitaComponent);
+
+    dialogoModal.afterClosed().subscribe((e) => {
+      this.consultarCitasUsuario();
     });
   }
 
-  irCrear(){
-    const dialogoModal = this.dialog.open(AgregarCitaComponent);
+  consultarCita(cita: CitaMedicaDTO) {
+    const dialogoModal = this.dialog.open(ModalConsultarCitaComponent, {
+      data: { cita: cita },
+    });
 
-    dialogoModal.afterClosed().subscribe(e => {
-        this.consultarCitasUsuario();
+    dialogoModal.afterClosed().subscribe((e) => {
+      //this.consultarCitasUsuario();
+    });
+    
+  }
+
+  cancelarCita(cita: CitaMedicaDTO) {
+    const dialogoModal = this.dialog.open(ModalCancelarCitaComponent, {
+      data: { cita: cita },
+    });
+
+    dialogoModal.afterClosed().subscribe((e) => {
+      this.consultarCitasUsuario();
     });
   }
 }

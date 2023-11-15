@@ -53,10 +53,14 @@
                         <td style="text-align: left;">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <i title="Consulta" class="fa fa-search icono-azul" aria-hidden="true"></i>
+                                    <i title="Consulta" class="fa fa-search icono-azul" aria-hidden="true"
+                                        (click)="consultarCita(cita)">
+                                    </i>
                                 </div>
                                 <div class="col-md-6">
-                                    <i title="Cancelar" class="fa fa-ban icono-rojo" aria-hidden="true"></i>
+                                    <i title="Cancelar" class="fa fa-ban icono-rojo" aria-hidden="true"
+                                    (click)="cancelarCita(cita)">
+                                </i>
 
                                 </div>
                             </div>
