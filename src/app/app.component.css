@@ -59,7 +59,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #777777;
+  /* color: #777777; */
   text-align: left;
   background-color: #fff;
 }
@@ -10041,4 +10041,36 @@ td, th {
 
 .icono-rojo {
   color: #dc3545; /* Cambia 'blue' al color que desees */
+}
+
+.select-selector {
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 8px; /* Ajuste de relleno para mejor apariencia */
+  background-color: #ED6436; /* Color de fondo naranja */
+  color: white; /* Color del texto */
+  font-size: 16px; /* Tamaño del texto */
+  border: none; /* Sin bordes */
+}
+
+/* Estilo para las opciones del selector */
+.option-selector {
+  background-color: white; /* Color de fondo para opciones */
+  color: black; /* Color del texto para opciones */
+}
+
+/* Estilo para el contenedor del selector y la etiqueta asociada */
+.label-selector {
+  display: block; /* Hace que la etiqueta sea de bloque para mejor alineación */
+  margin-bottom: 8px; /* Espaciado inferior para separar la etiqueta del selector */
+}
+
+select option[disabled]:first-child { display: none; }
+
+.input-selector {
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 8px; /* Ajuste de relleno para mejor apariencia */
+  background-color: #ED6436; /* Color de fondo naranja */
+  color: white; /* Color del texto */
+  font-size: 16px; /* Tamaño del texto */
+  border: none; /* Sin bordes */
 }

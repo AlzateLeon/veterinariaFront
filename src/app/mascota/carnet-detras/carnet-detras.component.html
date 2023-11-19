@@ -3,40 +3,46 @@
         {{mascota.nombre}}
     </h2>
 </div>
-
-<mat-dialog-content>
-    <div class="container">
-        <div class="row">
+<div class="contenedor">
+    <mat-dialog-content>
+        <div class="scrollable-section">
             <div class="col-md-12">
                 <table>
                     <thead>
                         <!-- style="width: 10;" -->
-                        <th>
+                        <th style="text-align: left;">
                             <strong> Vacuna</strong>
                         </th>
-                        <th>
+                        <th style="text-align: left;">
                             <strong> Fecha aplicación</strong>
+                        </th>
+                        <th style="text-align: left;">
+                            <strong> Veterinario </strong>
                         </th>
                     </thead>
                 </table>
                 <tbody>
                     <tr *ngFor="let vacuna of listaVacunas">
-                        <td>
-                            {{ vacuna.nombre }}
+                        <td style="text-align: left;">
+                            {{ vacuna.nombreVacuna }}
                         </td>
-                        <td>
+                        <td style="text-align: left;">
                             {{ vacuna.fecha }}
+                        </td>
+                        <td style="text-align: left;">
+                            {{ vacuna.nombreVeterinario }}
                         </td>
                     </tr>
                 </tbody>
             </div>
-        </div>
-    </div>
 
-    <div class="row" style="justify-content: center;">
-        <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-            (click)="voltearTarjeta()">volver</button>
-        <div style="width: 20px;"></div>
-        <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block" (click)="volver()">Cerrar</button>
-    </div>
-</mat-dialog-content>
+            <div class="row" style="justify-content: center;">
+                <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    (click)="voltearTarjeta()">volver</button>
+                <div style="width: 20px;"></div>
+                <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    (click)="volver()">Cerrar</button>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>

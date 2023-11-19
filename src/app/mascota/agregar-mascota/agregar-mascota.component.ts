@@ -27,7 +27,6 @@ export class AgregarMascotaComponent {
   private imagenMascota: string;
 
   constructor(
-    private router: Router,
     private form: FormBuilder,
     public usuarioService: UsuarioService,
     private mascotaService: MascotaService,

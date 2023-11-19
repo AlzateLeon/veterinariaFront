@@ -24,6 +24,10 @@ import { ModalCancelarCitaComponent } from './mascota/agenda-mascotas/modal-canc
 import { ModalConsultarCitaComponent } from './mascota/agenda-mascotas/modal-consultar-cita/modal-consultar-cita.component';
 import { EditarUsuarioComponent } from './usuario/perfil-usuario/editar-usuario/editar-usuario.component';
 import { InformacionPerfilUsuarioComponent } from './usuario/perfil-usuario/informacion-perfil-usuario/informacion-perfil-usuario.component';
+import { PanelControlAdminComponent } from './administrador/panel-control-admin/panel-control-admin.component';
+import { CitasControlComponent } from './administrador/panel-control-admin/citas-control/citas-control.component';
+import { VacunasControlComponent } from './administrador/panel-control-admin/vacunas-control/vacunas-control.component';
+import { UsuariosControlComponent } from './administrador/panel-control-admin/usuarios-control/usuarios-control.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +48,10 @@ import { InformacionPerfilUsuarioComponent } from './usuario/perfil-usuario/info
     ModalConsultarCitaComponent,
     EditarUsuarioComponent,
     InformacionPerfilUsuarioComponent,
+    PanelControlAdminComponent,
+    CitasControlComponent,
+    VacunasControlComponent,
+    UsuariosControlComponent,
   ],
   imports: [
     AppRoutingModule,

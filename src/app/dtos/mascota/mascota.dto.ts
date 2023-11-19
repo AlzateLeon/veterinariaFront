@@ -1,3 +1,5 @@
+import { CitaMedicaDTO } from "../cita/cita-medica.dto";
+
 export class MascotaDTO {
   id: number;
   nombre: string;
@@ -8,4 +10,6 @@ export class MascotaDTO {
   clicked: boolean = false;
   imagenMascota: string;
   observacion: string;
+
+  listaServicios:  CitaMedicaDTO[] = []; 
 }

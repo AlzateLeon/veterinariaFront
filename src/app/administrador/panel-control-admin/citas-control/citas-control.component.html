@@ -1,0 +1,104 @@
+<div class="container">
+    <form [formGroup]="citasForm">
+        <div class="row">
+
+            <div class="col-md-3">
+                <input class="input-selector" type="date" id="fecha" name="fecha" formControlName="fecha">
+            </div>
+
+            <div class="col-md-3">
+                <input placeholder="Cédula" class="input-selector" type="text" id="cedula" style="width: 100%;"
+                    name="cedula" formControlName="cedula">
+            </div>
+
+            <div class="col-md-3">
+                <select style="width: 90%;" formControlName="estado" [(ngModel)]="estado" class="select-selector" id="opciones" name="opciones">
+                    <option value="" selected disabled>Estado</option>
+                    <option class="option-selector" *ngFor="let estado of estados" [value]="estado">
+                        {{ estado }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <button style="width: 80%;" mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    (click)="aplicarFiltro()">
+                    Filtrar
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row scrollable-section">
+        <div class="col-md-12">
+            <table>
+                <thead>
+                    <!-- style="width: 10;" -->
+                    <th style="text-align: left;">
+                        <strong> Fecha Cita </strong>
+                    </th>
+
+                    <th style="text-align: left;">
+                        <strong> Dueño </strong>
+                    </th>
+
+                    <th style="text-align: left;">
+                        <strong> Mascota </strong>
+                    </th>
+
+                    <th style="text-align: left;">
+                        <strong> Tipo cita </strong>
+                    </th>
+
+                    <th style="text-align: left;">
+                        <strong> Estado </strong>
+                    </th>
+
+                    <th style="text-align: left;">
+                        <strong> Acciones </strong>
+                    </th>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let cita of citas">
+                        <td style="text-align: left;">
+                            {{ cita.fecha }}
+                        </td>
+
+                        <td style="text-align: left;">
+                            {{ cita.nombreMascota }}
+                        </td>
+
+                        <td style="text-align: left;">
+                            {{ cita.nombreMascota }}
+                        </td>
+
+                        <td style="text-align: left;">
+                            {{ cita.tipoCitaMascotaEnum }}
+                        </td>
+
+                        <td style="text-align: left;">
+                            {{ cita.estadoCitaMedicaEnum }}
+                        </td>
+
+                        <td style="text-align: left;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i title="Consulta" class="fa fa-search icono-azul" aria-hidden="true"
+                                        (click)="consultarCita(cita)">
+                                    </i>
+                                </div>
+                                <div class="col-md-6">
+                                    <i title="Cancelar" class="fa fa-ban icono-rojo" aria-hidden="true"
+                                        (click)="cancelarCita(cita)">
+                                    </i>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

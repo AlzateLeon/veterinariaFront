@@ -21,16 +21,18 @@ export class CarnetDetrasComponent {
     public dialogRef: MatDialogRef<CarnetDetrasComponent>
   ){
     this.mascota = this.mascotaService.getMascotaData();
-    for (let index = 0; index < 5; index++) {
+    // for (let index = 0; index < 5; index++) {
 
-      let vacunacion: any = {
-        nombre: "vacuna"+index,
-        fecha: "fecha"+index,
-        // Puedes agregar más propiedades aquí si es necesario
-      };
+    //   let vacunacion: any = {
+    //     nombre: "vacuna"+index,
+    //     fecha: "fecha"+index,
+    //     vet: "vet"+index
+    //     // Puedes agregar más propiedades aquí si es necesario
+    //   };
 
-      this.listaVacunas.push(vacunacion);
-    }
+    //   this.listaVacunas.push(vacunacion);
+    // }
+    this.listaVacunas = this.mascota.listaServicios;
   }
 
   volver() {

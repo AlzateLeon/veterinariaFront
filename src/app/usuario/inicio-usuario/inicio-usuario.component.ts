@@ -86,8 +86,7 @@ export class InicioUsuarioComponent {
         )
         .subscribe((respuesta) => {
           this.usuarioDTO = respuesta;
-          console.log("usuario encontrado", this.usuarioDTO);
-          
+          console.log('usuario encontrado', this.usuarioDTO);
 
           if (!this.usuarioDTO.exitoso) {
             this.serviciosVeterinariaService.openInfoModal(
@@ -97,26 +96,36 @@ export class InicioUsuarioComponent {
           } else {
             //validamos si esta activo el user
             if (this.usuarioDTO.activo) {
-              this.mascotaService
-                .consultarMascotasUsuario(this.usuarioDTO.idUser)
-                .subscribe((resultado) => {
-                  if (resultado.exitoso) {
-                    this.consultaMascotasUsuarioOutDTO = resultado;
-                    //this.mascotas = this.consultaMascotasUsuarioOutDTO.mascotas;
-                    this.limpiarCampos();
-                    this.closeDialog();
-                    this.submitted = false;
-                    this.usuarioService.setUsuarioData(this.usuarioDTO);
-                    this.mascotaService.setMascotasData(
-                      this.consultaMascotasUsuarioOutDTO
-                    );
-                    this.router.navigate(['/perfil-usuario']);
-                  } else {
-                    this.serviciosVeterinariaService.openInfoModal(
-                      this.consultaMascotasUsuarioOutDTO.mensaje
-                    );
-                  }
-                });
+              if (this.usuarioDTO.tipoUsuarioEnum === 'DUENO_MASCOTA') {
+                this.mascotaService
+                  .consultarMascotasUsuario(this.usuarioDTO.idUser)
+                  .subscribe((resultado) => {
+                    if (resultado.exitoso) {
+                      this.consultaMascotasUsuarioOutDTO = resultado;
+                      //this.mascotas = this.consultaMascotasUsuarioOutDTO.mascotas;
+                      this.limpiarCampos();
+                      this.closeDialog();
+                      this.submitted = false;
+                      this.usuarioService.setUsuarioData(this.usuarioDTO);
+                      this.mascotaService.setMascotasData(
+                        this.consultaMascotasUsuarioOutDTO
+                      );
+                      this.router.navigate(['/perfil-usuario']);
+                    } else {
+                      this.serviciosVeterinariaService.openInfoModal(
+                        this.consultaMascotasUsuarioOutDTO.mensaje
+                      );
+                    }
+                  });
+              }
+              if (this.usuarioDTO.tipoUsuarioEnum === 'ADMINISTRADOR') {
+                //es administrador
+                this.limpiarCampos();
+                this.closeDialog();
+                this.submitted = false;
+                this.usuarioService.setUsuarioData(this.usuarioDTO);
+                this.router.navigate(['/panel-admin']);
+              }
             } else {
               this.serviciosVeterinariaService.openInfoModal(
                 'El usuario aún no ha sido activado'

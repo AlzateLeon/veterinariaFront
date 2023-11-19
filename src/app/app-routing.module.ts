@@ -6,6 +6,7 @@ import { PrincipalComponent } from './principal/principal.component';
 import { PerfilUsuarioComponent } from './usuario/perfil-usuario/perfil-usuario.component';
 import { CrearUsuarioComponent } from './usuario/crear-usuario/crear-usuario.component';
 import { ValidarMailComponent } from './usuario/validar-mail/validar-mail.component';
+import { PanelControlAdminComponent } from './administrador/panel-control-admin/panel-control-admin.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -20,6 +21,9 @@ const routes: Routes = [
     },
     {
       path: 'validar-mail/:token/:idUser', component: ValidarMailComponent
+    },
+    {
+      path: 'panel-admin', component: PanelControlAdminComponent
     },
   ];
   
