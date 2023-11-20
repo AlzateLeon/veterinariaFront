@@ -22,14 +22,15 @@
 
             <div class="col-md-3">
                 <button style="width: 80%;" mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                    (click)="aplicarFiltro()">
+                    (click)="consultarCitas()">
                     Filtrar
+                    <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </form>
 
-    <div class="row scrollable-section">
+    <div class="row scrollable-section" [hidden]="!mostrarTabla">
         <div class="col-md-12">
             <table>
                 <thead>

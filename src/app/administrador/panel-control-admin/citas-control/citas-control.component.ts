@@ -9,18 +9,18 @@ import { CitaMedicaService } from 'src/app/servicios/cita.medica.service';
 @Component({
   selector: 'app-citas-control',
   templateUrl: './citas-control.component.html',
-  styleUrls: ['../../../app.component.css']
+  styleUrls: ['../../../app.component.css'],
 })
 export class CitasControlComponent implements AfterViewInit {
-
   private consultaCitaFiltrosInDTO: ConsultaCitaFiltrosInDTO;
   private consultasCitasUserOutDTO: ConsultasCitasUserOutDTO;
 
   public citas: CitaMedicaDTO[] = [];
-  public estados: string[] = ["Programada", "Cancelada", "Exitosa"];
+  public estados: string[] = ['Programada', 'Cancelada', 'Exitosa'];
 
   public citasForm: FormGroup;
   estado: string = '';
+  mostrarTabla: boolean = false;
 
   constructor(
     private form: FormBuilder,
@@ -34,61 +34,64 @@ export class CitasControlComponent implements AfterViewInit {
       cedula: [null],
     });
     this.consultarCitas();
-  
   }
 
   ngAfterViewInit(): void {
-    this.citasForm.get('nombre')?.setValue("a");
+    this.citasForm.get('nombre')?.setValue('a');
   }
 
-  consultarCitas(){
-    this.citasService.consultarCitasFiltros(this.consultaCitaFiltrosInDTO).subscribe(res =>{
-      this.consultasCitasUserOutDTO = res;
-      console.log(this.consultasCitasUserOutDTO);
-      
-      if (this.consultasCitasUserOutDTO.exitoso){
-        this.citas = this.consultasCitasUserOutDTO.listaCitasMedicas; 
-        this.cdRef.detectChanges();
-      }else{
-        this.serviciosVeterinariaService.openInfoModal(
-          this.consultasCitasUserOutDTO.mensaje
-        );
+  consultarCitas() {
+    this.consultaCitaFiltrosInDTO = new ConsultaCitaFiltrosInDTO();
+    this.consultaCitaFiltrosInDTO = new ConsultaCitaFiltrosInDTO();
+    this.consultaCitaFiltrosInDTO.cedula = this.citasForm.get('cedula')?.value;
+    this.consultaCitaFiltrosInDTO.fecha = this.citasForm.get('fecha')?.value;
+
+    if (this.citasForm.get('estado')?.value != null) {
+      if (this.citasForm.get('estado')?.value === 'Programada') {
+        this.consultaCitaFiltrosInDTO.estado = 'PROGRAMADA';
       }
-    });
+      if (this.citasForm.get('estado')?.value === 'Cancelada') {
+        this.consultaCitaFiltrosInDTO.estado = 'CANCELADA';
+      }
+      if (this.citasForm.get('estado')?.value === 'Exitosa') {
+        this.consultaCitaFiltrosInDTO.estado = 'EXITOSA';
+      }
+    }
+
+    console.log("dto enviar",  this.consultaCitaFiltrosInDTO);
+    
+    this.citasService
+      .consultarCitasFiltros(this.consultaCitaFiltrosInDTO)
+      .subscribe((res) => {
+        this.consultasCitasUserOutDTO = res;
+        console.log(this.consultasCitasUserOutDTO);
+
+        if (this.consultasCitasUserOutDTO.exitoso) {
+          if (
+            this.consultasCitasUserOutDTO.listaCitasMedicas != null &&
+            this.consultasCitasUserOutDTO.listaCitasMedicas.length > 0
+          ) {
+            this.citas = this.consultasCitasUserOutDTO.listaCitasMedicas;
+            this.mostrarTabla = true;
+            this.cdRef.detectChanges();
+          } else {
+            this.cdRef.detectChanges();
+            this.mostrarTabla = false;
+          }
+        } else {
+          this.serviciosVeterinariaService.openInfoModal(
+            this.consultasCitasUserOutDTO.mensaje
+          );
+        }
+      });
   }
 
   public get f() {
     return this.citasForm.controls;
   }
 
-  aplicarFiltro(){
-    this.consultaCitaFiltrosInDTO = new ConsultaCitaFiltrosInDTO();
-    this.consultaCitaFiltrosInDTO.cedula = this.citasForm.get('cedula')?.value;
-    this.consultaCitaFiltrosInDTO.fecha = this.citasForm.get('fecha')?.value;
-    
-    if (this.citasForm.get('estado')?.value != null){
-      if (this.citasForm.get('estado')?.value === 'Programada'){
-        this.consultaCitaFiltrosInDTO.estado = "PROGRAMADA";
-        
-      }
-      if (this.citasForm.get('estado')?.value === 'Cancelada'){
-        this.consultaCitaFiltrosInDTO.estado = "CANCELADA";
 
-      }
-      if (this.citasForm.get('estado')?.value === 'Exitosa'){
-        this.consultaCitaFiltrosInDTO.estado = "EXITOSA";
+  consultarCita(citaMedicaDTO: CitaMedicaDTO) {}
 
-      }
-    }
-
-    this.consultarCitas();
-  }
-
-  consultarCita(citaMedicaDTO: CitaMedicaDTO){
-
-  }
-
-  cancelarCita(citaMedicaDTO: CitaMedicaDTO){
-
-  }
+  cancelarCita(citaMedicaDTO: CitaMedicaDTO) {}
 }

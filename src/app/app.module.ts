@@ -28,6 +28,7 @@ import { PanelControlAdminComponent } from './administrador/panel-control-admin/
 import { CitasControlComponent } from './administrador/panel-control-admin/citas-control/citas-control.component';
 import { VacunasControlComponent } from './administrador/panel-control-admin/vacunas-control/vacunas-control.component';
 import { UsuariosControlComponent } from './administrador/panel-control-admin/usuarios-control/usuarios-control.component';
+import { AgregarVacunaComponent } from './administrador/panel-control-admin/vacunas-control/agregar-vacuna/agregar-vacuna.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { UsuariosControlComponent } from './administrador/panel-control-admin/us
     CitasControlComponent,
     VacunasControlComponent,
     UsuariosControlComponent,
+    AgregarVacunaComponent,
   ],
   imports: [
     AppRoutingModule,

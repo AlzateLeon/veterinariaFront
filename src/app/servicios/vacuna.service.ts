@@ -5,6 +5,8 @@ import { ResultadoDTO } from '../dtos/resultado.dto';
 import { Observable } from 'rxjs';
 import { CreacionVacunaInDTO } from '../dtos/vacuna/creacion-vacuna-in.dto';
 import { AplicacionVacunaInDTO } from '../dtos/vacuna/aplicacion-vacuna-in.dto';
+import { ConsultaVacunafiltrosInDTO } from '../dtos/vacuna/consulta-vacuna-filtros-in.dto';
+import { ConsultaVacunafiltrosOutDTO } from '../dtos/vacuna/consulta-vacuna-filtros-out.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +22,10 @@ export class VacunaService {
 
   aplicarVacuna(inDTO: AplicacionVacunaInDTO): Observable<ResultadoDTO> {
     return this.http.post<ResultadoDTO>(`${this.baseUrl}/aplicarVacuna`, inDTO);
+  }
+
+  consultarVacunasFiltros(inDTO: ConsultaVacunafiltrosInDTO): Observable<ConsultaVacunafiltrosOutDTO>{
+    return this.http.post<ConsultaVacunafiltrosOutDTO>(`${this.baseUrl}/consultarVacunasFiltros`, inDTO);
   }
 
 }
