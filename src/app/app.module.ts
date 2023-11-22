@@ -29,6 +29,9 @@ import { CitasControlComponent } from './administrador/panel-control-admin/citas
 import { VacunasControlComponent } from './administrador/panel-control-admin/vacunas-control/vacunas-control.component';
 import { UsuariosControlComponent } from './administrador/panel-control-admin/usuarios-control/usuarios-control.component';
 import { AgregarVacunaComponent } from './administrador/panel-control-admin/vacunas-control/agregar-vacuna/agregar-vacuna.component';
+import { CustomSnackbarComponent } from './utiles/snackbar/CustomSnackbarComponent ';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { InfoBoxComponent } from './utiles/infoBox/InfoBoxComponent ';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,8 @@ import { AgregarVacunaComponent } from './administrador/panel-control-admin/vacu
     VacunasControlComponent,
     UsuariosControlComponent,
     AgregarVacunaComponent,
+    CustomSnackbarComponent,
+    InfoBoxComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -64,6 +69,7 @@ import { AgregarVacunaComponent } from './administrador/panel-control-admin/vacu
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    BrowserModule, BrowserAnimationsModule, MatSnackBarModule,
     
   ],
   providers: [

@@ -11,13 +11,23 @@
                     name="cedula" formControlName="cedula">
             </div>
 
-            <div class="col-md-3">
-                <select style="width: 90%;" formControlName="estado" [(ngModel)]="estado" class="select-selector" id="opciones" name="opciones">
+
+            <div class="col-md-2">
+                <select style="width: 100%; padding-right: 0;" formControlName="estado" [(ngModel)]="estado"
+                    class="select-selector" id="opciones" name="opciones" (change)="seleccionar()">
                     <option value="" selected disabled>Estado</option>
                     <option class="option-selector" *ngFor="let estado of estados" [value]="estado">
                         {{ estado }}
+
                     </option>
                 </select>
+
+            </div>
+
+            <div class="col-md-1" *ngIf="opcionSeleccionada">
+                <button style="background-color: #b21f2d;" (click)="deseleccionar()">
+                    x
+                </button>
             </div>
 
             <div class="col-md-3">
@@ -39,7 +49,7 @@
                         <strong> Fecha Cita </strong>
                     </th>
 
-                    <th style="text-align: left;">
+                    <th style="text-align: left;  width: 150px;">
                         <strong> Dueño </strong>
                     </th>
 
@@ -66,8 +76,8 @@
                             {{ cita.fecha }}
                         </td>
 
-                        <td style="text-align: left;">
-                            {{ cita.nombreMascota }}
+                        <td style="text-align: left; width: 150px;">
+                            {{ cita.nombreUsuario }}
                         </td>
 
                         <td style="text-align: left;">
@@ -101,5 +111,9 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <br>
+    <div *ngIf="!mostrarTabla">
+        <app-info-box></app-info-box>
     </div>
 </div>

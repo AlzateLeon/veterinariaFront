@@ -9,4 +9,5 @@ export class CitaMedicaDTO{
      tipoCitaMascotaEnum: string;
      nombreVacuna: string;
      observaciones: string;
+     nombreUsuario: string;
 }

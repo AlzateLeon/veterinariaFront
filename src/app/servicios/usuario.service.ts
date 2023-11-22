@@ -5,6 +5,8 @@ import { EditarUsuarioMascotaInDTO } from '../dtos/editar-usuario-mascota-in.dto
 import { ResultadoDTO } from '../dtos/resultado.dto';
 import { ActivarCuentaDTO } from '../dtos/activar-cuenta.dto';
 import { EnvioCorreoInDTO } from '../dtos/envio-correo-in.dto';
+import { ConsultaUsuariosFiltrosOutDTO } from '../dtos/usuario/consulta-usuarios-filtros-out.dto';
+import { ConsultaUsuariosFiltrosInDTO } from '../dtos/usuario/consulta-usuarios-filtros-in.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -35,5 +37,9 @@ export class UsuarioService {
   activarCuenta(activarCuentaDTO: ActivarCuentaDTO): Observable<ResultadoDTO> {
     const url = `${this.baseUrl}/activarCuenta`;
     return this.http.post<ResultadoDTO>(url, activarCuentaDTO);
+  }
+
+  consultarUsuariosFiltros(inDTO: ConsultaUsuariosFiltrosInDTO): Observable<ConsultaUsuariosFiltrosOutDTO> {
+    return this.http.post<ConsultaUsuariosFiltrosOutDTO>(`${this.baseUrl}/consultarUsuariosFiltros`, inDTO);
   }
 }

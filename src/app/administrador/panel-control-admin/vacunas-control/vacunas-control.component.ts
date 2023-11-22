@@ -7,6 +7,8 @@ import { VacunaService } from 'src/app/servicios/vacuna.service';
 import { ConsultaVacunafiltrosInDTO } from 'src/app/dtos/vacuna/consulta-vacuna-filtros-in.dto';
 import { ConsultaVacunafiltrosOutDTO } from 'src/app/dtos/vacuna/consulta-vacuna-filtros-out.dto';
 import { VacunaDTO } from 'src/app/dtos/vacuna/vacuna.dto';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CustomSnackbarComponent } from 'src/app/utiles/snackbar/CustomSnackbarComponent ';
 
 @Component({
   selector: 'app-vacunas-control',
@@ -23,10 +25,12 @@ export class VacunasControlComponent {
   consultaVacunafiltrosOutDTO: ConsultaVacunafiltrosOutDTO;
   public listaVacunas: VacunaDTO[] = [];
   mostrarTabla: boolean = false;
+  opcionSeleccionada: boolean =false;
 
   constructor(
     private form: FormBuilder,
     public dialog: MatDialog,
+    private snackBar: MatSnackBar,
     private cdRef: ChangeDetectorRef,
     private vacunaService : VacunaService,
     private serviciosVeterinariaService: ServiciosVeterinariaService
@@ -35,6 +39,7 @@ export class VacunasControlComponent {
       tipo: [null],
     });
     this.consultarVacunas();
+    // this.openSnackbar();
   }
 
   consultarVacunas(){
@@ -97,4 +102,22 @@ export class VacunasControlComponent {
   consultarVacuna(vacuna: any) {}
   
   cancelarVacuna(vacuna: any) {}
+
+  deseleccionar(){
+    this.tipo = '';
+    this.opcionSeleccionada= false;
+  }
+
+  seleccionar(){
+    this.opcionSeleccionada= true;
+  }
+
+  openSnackbar() {
+    this.snackBar.openFromComponent(CustomSnackbarComponent, {
+      data: { message: 'Mensaje personalizado' },
+      duration: 3000, // Duración en milisegundos
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
 }

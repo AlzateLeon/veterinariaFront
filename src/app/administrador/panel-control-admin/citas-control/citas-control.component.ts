@@ -12,6 +12,7 @@ import { CitaMedicaService } from 'src/app/servicios/cita.medica.service';
   styleUrls: ['../../../app.component.css'],
 })
 export class CitasControlComponent implements AfterViewInit {
+
   private consultaCitaFiltrosInDTO: ConsultaCitaFiltrosInDTO;
   private consultasCitasUserOutDTO: ConsultasCitasUserOutDTO;
 
@@ -21,6 +22,7 @@ export class CitasControlComponent implements AfterViewInit {
   public citasForm: FormGroup;
   estado: string = '';
   mostrarTabla: boolean = false;
+  opcionSeleccionada: boolean =false;
 
   constructor(
     private form: FormBuilder,
@@ -41,7 +43,6 @@ export class CitasControlComponent implements AfterViewInit {
   }
 
   consultarCitas() {
-    this.consultaCitaFiltrosInDTO = new ConsultaCitaFiltrosInDTO();
     this.consultaCitaFiltrosInDTO = new ConsultaCitaFiltrosInDTO();
     this.consultaCitaFiltrosInDTO.cedula = this.citasForm.get('cedula')?.value;
     this.consultaCitaFiltrosInDTO.fecha = this.citasForm.get('fecha')?.value;
@@ -94,4 +95,13 @@ export class CitasControlComponent implements AfterViewInit {
   consultarCita(citaMedicaDTO: CitaMedicaDTO) {}
 
   cancelarCita(citaMedicaDTO: CitaMedicaDTO) {}
+
+  deseleccionar(){
+    this.estado = '';
+    this.opcionSeleccionada= false;
+  }
+
+  seleccionar(){
+    this.opcionSeleccionada= true;
+  }
 }
