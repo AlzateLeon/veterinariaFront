@@ -1,6 +1,6 @@
 <div class="container-fluid bg-dark">
     <h2 style="text-align: center; height:50px; vertical-align: middle;" class="text-white">
-        Información cita
+        Información Vacuna
     </h2>
 </div>
 
@@ -8,17 +8,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <p><b>Veterinario:</b> {{ citaConsultar.nombreVeterinario }}</p>
-        </div>
-
-        <div class="col-md-12">
-            <p *ngIf="vacunacion">
-                <b>Vacuna aplicada:</b> {{ citaConsultar.nombreVacuna }}
-            </p>
-        </div>
-
-        <div class="col-md-12">
-            <p><b>Observaciones:</b> {{ citaConsultar.observaciones }}</p>
+            <p><b>Observación:</b> {{ vacuna.observaciones }}</p>
         </div>
     </div>
 

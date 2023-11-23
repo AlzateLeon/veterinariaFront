@@ -19,7 +19,7 @@ export class ModalConsultarCitaComponent {
   ) {
     this.citaConsultar = this.data.cita;
     console.log(data.cita);
-    this.vacunacion = this.citaConsultar.estadoCitaMedicaEnum === 'VACUNACION';
+    this.vacunacion = this.citaConsultar.tipoCitaMascotaEnum === 'VACUNACION';
   }
 
   volver() {

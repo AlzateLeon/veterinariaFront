@@ -35,6 +35,7 @@ export class AgregarVacunaComponent {
       nombre: ['', Validators.required],
       tipo: ['', Validators.required],
       observaciones: [''],
+      unidades: [''],
     });
   }
 
@@ -55,6 +56,7 @@ export class AgregarVacunaComponent {
     this.creacionVacunaInDTO.nombre =  this.vacunaForm.get('nombre')?.value;
     this.creacionVacunaInDTO.tipoMascota =  this.vacunaForm.get('tipo')?.value;
     this.creacionVacunaInDTO.observaciones =  this.vacunaForm.get('observaciones')?.value;
+    this.creacionVacunaInDTO.unidadades =  this.vacunaForm.get('unidades')?.value;
 
     this.vacunaService.crearVacuna(this.creacionVacunaInDTO).subscribe(res=>{
       if (res.exitoso){

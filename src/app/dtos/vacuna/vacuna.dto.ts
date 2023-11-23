@@ -3,4 +3,5 @@ export class VacunaDTO{
      nombre: string;
      tipoMascota: string;
      observaciones: string
+     unidadDisponible: number;
 }

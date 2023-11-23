@@ -32,6 +32,7 @@ import { AgregarVacunaComponent } from './administrador/panel-control-admin/vacu
 import { CustomSnackbarComponent } from './utiles/snackbar/CustomSnackbarComponent ';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { InfoBoxComponent } from './utiles/infoBox/InfoBoxComponent ';
+import { ConsultarVacunaComponent } from './administrador/panel-control-admin/vacunas-control/consultar-vacuna/consultar-vacuna.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { InfoBoxComponent } from './utiles/infoBox/InfoBoxComponent ';
     AgregarVacunaComponent,
     CustomSnackbarComponent,
     InfoBoxComponent,
+    ConsultarVacunaComponent,
   ],
   imports: [
     AppRoutingModule,

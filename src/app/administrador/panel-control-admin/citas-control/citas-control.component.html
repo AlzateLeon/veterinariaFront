@@ -1,4 +1,5 @@
 <div class="container">
+    <h2>Gestion de Citas</h2>
     <form [formGroup]="citasForm">
         <div class="row">
 
@@ -30,11 +31,16 @@
                 </button>
             </div>
 
-            <div class="col-md-3">
-                <button style="width: 80%;" mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+            <div class="col-md-1">
+                <button  mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                     (click)="consultarCitas()">
-                    Filtrar
                     <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+            <!-- btn agregar -->
+            <div class="col-md-1">
+                <button class="btn btn-lg btn-primary px-3 d-none d-lg-block" (click)="agregarCita()">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
@@ -74,6 +80,7 @@
                     <tr *ngFor="let cita of citas">
                         <td style="text-align: left;">
                             {{ cita.fecha }}
+                            {{ cita.hora }}
                         </td>
 
                         <td style="text-align: left; width: 150px;">

@@ -9,6 +9,7 @@ import { ConsultaVacunafiltrosOutDTO } from 'src/app/dtos/vacuna/consulta-vacuna
 import { VacunaDTO } from 'src/app/dtos/vacuna/vacuna.dto';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomSnackbarComponent } from 'src/app/utiles/snackbar/CustomSnackbarComponent ';
+import { ConsultarVacunaComponent } from './consultar-vacuna/consultar-vacuna.component';
 
 @Component({
   selector: 'app-vacunas-control',
@@ -99,7 +100,13 @@ export class VacunasControlComponent {
     });
   }
   
-  consultarVacuna(vacuna: any) {}
+  consultarVacuna(vacuna: any) {
+
+    this.dialog.open(ConsultarVacunaComponent, {
+      data: { vacuna: vacuna },
+      width: '50%', 
+    });
+  }
   
   cancelarVacuna(vacuna: any) {}
 

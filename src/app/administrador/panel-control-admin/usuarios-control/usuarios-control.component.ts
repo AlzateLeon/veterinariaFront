@@ -58,4 +58,8 @@ export class UsuariosControlComponent {
     
   }
 
+  agregarUsuario(){
+    
+  }
+
 }

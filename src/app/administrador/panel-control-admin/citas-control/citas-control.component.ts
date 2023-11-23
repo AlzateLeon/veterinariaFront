@@ -1,8 +1,12 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { CitaMedicaDTO } from 'src/app/dtos/cita/cita-medica.dto';
 import { ConsultaCitaFiltrosInDTO } from 'src/app/dtos/cita/consulta-cita-filtros-in.dto';
 import { ConsultasCitasUserOutDTO } from 'src/app/dtos/cita/consultas-citas-user-out.dto';
+import { AgregarCitaComponent } from 'src/app/mascota/agenda-mascotas/agregar-cita/agregar-cita.component';
+import { ModalCancelarCitaComponent } from 'src/app/mascota/agenda-mascotas/modal-cancelar-cita/modal-cancelar-cita.component';
+import { ModalConsultarCitaComponent } from 'src/app/mascota/agenda-mascotas/modal-consultar-cita/modal-consultar-cita.component';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { CitaMedicaService } from 'src/app/servicios/cita.medica.service';
 
@@ -12,7 +16,6 @@ import { CitaMedicaService } from 'src/app/servicios/cita.medica.service';
   styleUrls: ['../../../app.component.css'],
 })
 export class CitasControlComponent implements AfterViewInit {
-
   private consultaCitaFiltrosInDTO: ConsultaCitaFiltrosInDTO;
   private consultasCitasUserOutDTO: ConsultasCitasUserOutDTO;
 
@@ -22,9 +25,10 @@ export class CitasControlComponent implements AfterViewInit {
   public citasForm: FormGroup;
   estado: string = '';
   mostrarTabla: boolean = false;
-  opcionSeleccionada: boolean =false;
+  opcionSeleccionada: boolean = false;
 
   constructor(
+    public dialog: MatDialog,
     private form: FormBuilder,
     private cdRef: ChangeDetectorRef,
     public citasService: CitaMedicaService,
@@ -59,8 +63,8 @@ export class CitasControlComponent implements AfterViewInit {
       }
     }
 
-    console.log("dto enviar",  this.consultaCitaFiltrosInDTO);
-    
+    console.log('dto enviar', this.consultaCitaFiltrosInDTO);
+
     this.citasService
       .consultarCitasFiltros(this.consultaCitaFiltrosInDTO)
       .subscribe((res) => {
@@ -91,17 +95,51 @@ export class CitasControlComponent implements AfterViewInit {
     return this.citasForm.controls;
   }
 
+  consultarCita(cita: CitaMedicaDTO) {
+    const dialogoModal = this.dialog.open(ModalConsultarCitaComponent, {
+      data: { cita: cita },
+      width: '50%', 
+    });
 
-  consultarCita(citaMedicaDTO: CitaMedicaDTO) {}
-
-  cancelarCita(citaMedicaDTO: CitaMedicaDTO) {}
-
-  deseleccionar(){
-    this.estado = '';
-    this.opcionSeleccionada= false;
+    dialogoModal.afterClosed().subscribe((e) => {
+      //this.consultarCitasUsuario();
+    });
   }
 
-  seleccionar(){
-    this.opcionSeleccionada= true;
+  cancelarCita(cita: CitaMedicaDTO) {
+    const dialogoModal = this.dialog.open(ModalCancelarCitaComponent, {
+      data: { cita: cita,
+              proceso: "control" },
+    });
+
+    dialogoModal.afterClosed().subscribe((e) => {
+      this.citasForm.get('estado')?.setValue(null);
+      this.citasForm.get('fecha')?.setValue(null);
+      this.citasForm.get('cedula')?.setValue(null);
+      this.consultarCitas();
+    });
+  }
+
+  deseleccionar() {
+    this.estado = '';
+    this.opcionSeleccionada = false;
+  }
+
+  seleccionar() {
+    this.opcionSeleccionada = true;
+  }
+
+  agregarCita() {
+    const dialogoModal = this.dialog.open(AgregarCitaComponent,
+      {
+        data: { proceso: "citaControl" },
+      });
+
+    dialogoModal.afterClosed().subscribe((e) => {
+      this.citasForm.get('estado')?.setValue(null);
+      this.citasForm.get('fecha')?.setValue(null);
+      this.citasForm.get('cedula')?.setValue(null);
+      this.consultarCitas();
+    });
   }
 }

@@ -6,4 +6,5 @@ export class CreacionCitaInDTO{
      hora: string;
      tipoCitaMascotaEnum: string;
      idUser: number;
+     observacion: string;
 }

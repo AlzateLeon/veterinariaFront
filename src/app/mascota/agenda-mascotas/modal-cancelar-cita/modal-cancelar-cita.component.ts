@@ -16,8 +16,8 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   styleUrls: ['../../../app.component.css'],
 })
 export class ModalCancelarCitaComponent {
-  
   citaCancelar: CitaMedicaDTO;
+  proceso: string;
 
   public usuarioDTO: UsuarioDTO;
 
@@ -30,8 +30,8 @@ export class ModalCancelarCitaComponent {
     private serviciosVeterinariaService: ServiciosVeterinariaService
   ) {
     this.citaCancelar = this.data.cita;
+    this.proceso = this.data.proceso;
     this.usuarioDTO = usuarioService.getUsuarioData();
-    console.log(data.cita);
   }
 
   volver() {
@@ -41,23 +41,32 @@ export class ModalCancelarCitaComponent {
   cancelarCita() {
     this.citaMedicaService.cancelarCita(this.citaCancelar).subscribe((res) => {
       if (res.exitoso) {
-        this.serviciosVeterinariaService
-          .consultarUsuarioExistente(
-            this.usuarioDTO.correo,
-            this.usuarioDTO.contrasena 
-          )
-          .subscribe((resultado) => {
-            if (resultado.exitoso){
-              this.usuarioDTO = resultado;
-              this.usuarioService.setUsuarioData(this.usuarioDTO);
-              this.serviciosVeterinariaService.openInfoModal(
-                'Cita cancelada exitosamente'
-              );
-            }else{
-              this.serviciosVeterinariaService.openInfoModal(resultado.mensaje);
-            }
-          });
-        this.volver();
+        if (this.proceso === 'usuario') {
+          this.serviciosVeterinariaService
+            .consultarUsuarioExistente(
+              this.usuarioDTO.correo,
+              this.usuarioDTO.contrasena
+            )
+            .subscribe((resultado) => {
+              if (resultado.exitoso) {
+                this.usuarioDTO = resultado;
+                this.usuarioService.setUsuarioData(this.usuarioDTO);
+                this.serviciosVeterinariaService.openInfoModal(
+                  'Cita cancelada exitosamente'
+                );
+              } else {
+                this.serviciosVeterinariaService.openInfoModal(
+                  resultado.mensaje
+                );
+              }
+            });
+          this.volver();
+        }else{
+          this.serviciosVeterinariaService.openInfoModal(
+            'Cita cancelada exitosamente'
+          );
+          this.volver();
+        }
       } else {
         this.serviciosVeterinariaService.openInfoModal(res.mensaje);
       }

@@ -6,9 +6,7 @@ import { ServiciosVeterinariaService } from '../servicios-veterinaria.service';
   selector: 'app-principal',
   templateUrl: './principal.component.html',
   styleUrls: ['../app.component.css',
-    '../lib/flaticon/font/flaticon.css',
-    '../lib/owlcarousel/assets/owl.carousel.min.css',
-    '../lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css']
+    '../lib/flaticon/font/flaticon.css']
 })
 export class PrincipalComponent {
 
