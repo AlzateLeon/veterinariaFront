@@ -13,7 +13,7 @@ import { ModalInfoComponent } from 'src/app/utiles/modal-info/modal-info.compone
 @Component({
   selector: 'app-inicio-usuario',
   templateUrl: './inicio-usuario.component.html',
-  styleUrls: ['../../app.component.css'],
+  styleUrls: ['../../app.component.css', '../../css/principal.css']
 })
 export class InicioUsuarioComponent {
   public creacionUsuarioIn: CreacionUsuarioIn;

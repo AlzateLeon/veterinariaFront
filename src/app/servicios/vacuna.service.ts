@@ -7,12 +7,14 @@ import { CreacionVacunaInDTO } from '../dtos/vacuna/creacion-vacuna-in.dto';
 import { AplicacionVacunaInDTO } from '../dtos/vacuna/aplicacion-vacuna-in.dto';
 import { ConsultaVacunafiltrosInDTO } from '../dtos/vacuna/consulta-vacuna-filtros-in.dto';
 import { ConsultaVacunafiltrosOutDTO } from '../dtos/vacuna/consulta-vacuna-filtros-out.dto';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VacunaService {
-  private baseUrl = 'http://localhost:8080/veterinaria/vacuna';
+  // private baseUrl = 'http://localhost:8080/veterinaria/vacuna';
+  private baseUrl = environment.apiUrl + ':8080/veterinaria/vacuna'; 
 
   constructor(private http: HttpClient, private dialog: MatDialog) {}
 

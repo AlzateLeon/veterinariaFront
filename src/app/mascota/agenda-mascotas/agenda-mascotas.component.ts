@@ -13,7 +13,7 @@ import { ModalConsultarCitaComponent } from './modal-consultar-cita/modal-consul
 @Component({
   selector: 'app-agenda-mascotas',
   templateUrl: './agenda-mascotas.component.html',
-  styleUrls: ['../../app.component.css'],
+  styleUrls: ['../../app.component.css', '../../css/principal.css'],
 })
 export class AgendaMascotasComponent {
   public submitted: boolean = false;

@@ -5,14 +5,17 @@ import { ServiciosVeterinariaService } from '../servicios-veterinaria.service';
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
-  styleUrls: ['../app.component.css',
-    '../lib/flaticon/font/flaticon.css']
+  styleUrls: [
+    '../app.component.css',
+    '../css/principal.css',
+    '../lib/flaticon/font/flaticon.css',
+  ],
 })
 export class PrincipalComponent {
-
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private serviciosVeterinariaService: ServiciosVeterinariaService
-    ) { }
+  ) {}
 
   navegarAInicioUser() {
     //this.router.navigate(['/app-inicio-usuario']); // 'otro' es la ruta que definiste en el enrutamiento
@@ -27,7 +30,11 @@ export class PrincipalComponent {
     // Utiliza JavaScript o TypeScript para navegar a la sección de destino
     const seccionDestino = document.getElementById('seccionSobreNosotros');
     if (seccionDestino) {
-      seccionDestino.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+      seccionDestino.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
     }
   }
 
@@ -46,5 +53,4 @@ export class PrincipalComponent {
       seccionDestino.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
 }

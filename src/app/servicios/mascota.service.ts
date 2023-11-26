@@ -8,6 +8,7 @@ import { AgregarMascotaComponent } from '../mascota/agregar-mascota/agregar-masc
 import { creacionMascotaInDTO } from '../dtos/mascota/creacion-mascota-in.dto';
 import { ResultadoDTO } from '../dtos/resultado.dto';
 import { EditarMascotaInDTO } from '../dtos/mascota/editar-mascota-in.dto';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,8 @@ export class MascotaService {
   private mascotaData = new BehaviorSubject<any>(null);
   mascotaData$ = this.mascotaData.asObservable();
 
-  private baseUrl = 'http://localhost:8080/veterinaria/mascota';
+  // private baseUrl = 'http://localhost:8080/veterinaria/mascota';
+  private baseUrl = environment.apiUrl + ':8080/veterinaria/mascota'; 
 
   constructor(private http: HttpClient, private dialog: MatDialog) {}
 

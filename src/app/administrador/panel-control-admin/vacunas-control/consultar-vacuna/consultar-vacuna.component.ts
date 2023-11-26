@@ -5,7 +5,7 @@ import { VacunaDTO } from 'src/app/dtos/vacuna/vacuna.dto';
 @Component({
   selector: 'app-consultar-vacuna',
   templateUrl: './consultar-vacuna.component.html',
-  styleUrls: ['../../../../app.component.css'],
+  styleUrls: ['../../../../app.component.css', '../../../../css/principal.css'],
 })
 export class ConsultarVacunaComponent {
 

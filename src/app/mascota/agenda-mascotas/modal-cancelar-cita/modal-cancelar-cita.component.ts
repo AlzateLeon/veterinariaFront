@@ -13,7 +13,7 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 @Component({
   selector: 'app-modal-cancelar-cita',
   templateUrl: './modal-cancelar-cita.component.html',
-  styleUrls: ['../../../app.component.css'],
+  styleUrls: ['../../../app.component.css', '../../../css/principal.css'],
 })
 export class ModalCancelarCitaComponent {
   citaCancelar: CitaMedicaDTO;

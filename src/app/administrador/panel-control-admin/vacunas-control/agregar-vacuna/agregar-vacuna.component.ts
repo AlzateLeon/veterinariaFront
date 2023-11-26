@@ -10,7 +10,7 @@ import { VacunaService } from 'src/app/servicios/vacuna.service';
 @Component({
   selector: 'app-agregar-vacuna',
   templateUrl: './agregar-vacuna.component.html',
-  styleUrls: ['../../../../app.component.css'],
+  styleUrls: ['../../../../app.component.css', '../../../../css/principal.css'],
 })
 export class AgregarVacunaComponent {
 

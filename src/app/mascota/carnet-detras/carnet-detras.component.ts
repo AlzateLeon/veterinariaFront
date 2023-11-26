@@ -7,7 +7,7 @@ import { CarnetMascotaComponent } from '../carnet-mascota/carnet-mascota.compone
 @Component({
   selector: 'app-carnet-detras',
   templateUrl: './carnet-detras.component.html',
-  styleUrls: ['../../app.component.css'],
+  styleUrls: ['../../app.component.css', '../../css/principal.css'],
 })
 export class CarnetDetrasComponent {
 

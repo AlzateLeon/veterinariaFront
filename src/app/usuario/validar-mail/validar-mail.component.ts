@@ -7,10 +7,9 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 @Component({
   selector: 'app-validar-mail',
   templateUrl: './validar-mail.component.html',
-  styleUrls: ['../../app.component.css'],
+  styleUrls: ['../../app.component.css', '../../css/principal.css'],
 })
 export class ValidarMailComponent {
-
   private idUser: number;
   private token: string;
 
@@ -22,16 +21,14 @@ export class ValidarMailComponent {
 
   ngOnInit() {
     // Obtén el valor del parámetro "token" de la URL
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       this.token = params['token'];
       this.idUser = params['idUser'];
-
     });
   }
 
   validarSi() {
-
-    let activarCuentaDTO : ActivarCuentaDTO = new ActivarCuentaDTO();
+    let activarCuentaDTO: ActivarCuentaDTO = new ActivarCuentaDTO();
     activarCuentaDTO.idUsuario = this.idUser;
     activarCuentaDTO.token = this.token;
 
@@ -41,7 +38,7 @@ export class ValidarMailComponent {
           'Cuenta Activada correctamente, ya puedes cerrar esta página'
         );
         return;
-      }else{
+      } else {
         this.serviciosVeterinariaService.openInfoModal(res.mensaje);
       }
     });

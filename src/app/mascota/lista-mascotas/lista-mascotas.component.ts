@@ -12,7 +12,7 @@ import { CarnetMascotaComponent } from '../carnet-mascota/carnet-mascota.compone
 @Component({
   selector: 'app-lista-mascotas',
   templateUrl: './lista-mascotas.component.html',
-  styleUrls: ['../../app.component.css'],
+  styleUrls: ['../../app.component.css', '../../css/principal.css'],
 })
 export class ListaMascotasComponent implements AfterViewInit {
 

@@ -5,7 +5,7 @@ import { CitaMedicaDTO } from 'src/app/dtos/cita/cita-medica.dto';
 @Component({
   selector: 'app-modal-consultar-cita',
   templateUrl: './modal-consultar-cita.component.html',
-  styleUrls: ['../../../app.component.css'],
+  styleUrls: ['../../../app.component.css', '../../../css/principal.css'],
 })
 export class ModalConsultarCitaComponent {
 

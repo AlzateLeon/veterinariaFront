@@ -5,7 +5,7 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 @Component({
   selector: 'app-panel-control-admin',
   templateUrl: './panel-control-admin.component.html',
-  styleUrls: ['../../app.component.css']
+  styleUrls: ['../../app.component.css', '../../css/principal.css']
 })
 export class PanelControlAdminComponent {
 

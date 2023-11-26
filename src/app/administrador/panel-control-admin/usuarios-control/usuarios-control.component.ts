@@ -9,7 +9,7 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 @Component({
   selector: 'app-usuarios-control',
   templateUrl: './usuarios-control.component.html',
-  styleUrls: ['../../../app.component.css']
+  styleUrls: ['../../../app.component.css', '../../../css/principal.css']
 })
 export class UsuariosControlComponent {
 

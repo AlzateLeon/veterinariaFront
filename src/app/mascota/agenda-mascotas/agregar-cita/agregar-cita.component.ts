@@ -20,7 +20,7 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 @Component({
   selector: 'app-agregar-cita',
   templateUrl: './agregar-cita.component.html',
-  styleUrls: ['../../../app.component.css'],
+  styleUrls: ['../../../app.component.css', '../../../css/principal.css'],
 })
 export class AgregarCitaComponent {
   public citaForm: FormGroup;

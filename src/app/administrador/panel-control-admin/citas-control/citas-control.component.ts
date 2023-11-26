@@ -13,7 +13,7 @@ import { CitaMedicaService } from 'src/app/servicios/cita.medica.service';
 @Component({
   selector: 'app-citas-control',
   templateUrl: './citas-control.component.html',
-  styleUrls: ['../../../app.component.css'],
+  styleUrls: ['../../../app.component.css', '../../../css/principal.css'],
 })
 export class CitasControlComponent implements AfterViewInit {
   private consultaCitaFiltrosInDTO: ConsultaCitaFiltrosInDTO;

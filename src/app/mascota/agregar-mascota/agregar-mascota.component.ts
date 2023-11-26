@@ -12,7 +12,7 @@ import { ModalInfoComponent } from 'src/app/utiles/modal-info/modal-info.compone
 @Component({
   selector: 'app-agregar-mascota',
   templateUrl: './agregar-mascota.component.html',
-  styleUrls: ['../../app.component.css'],
+  styleUrls: ['../../app.component.css', '../../css/principal.css'],
 })
 export class AgregarMascotaComponent {
 

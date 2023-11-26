@@ -5,7 +5,7 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 @Component({
   selector: 'app-informacion-perfil-usuario',
   templateUrl: './informacion-perfil-usuario.component.html',
-  styleUrls: ['../../../app.component.css'],
+  styleUrls: ['../../../app.component.css', '../../../css/principal.css'],
 })
 export class InformacionPerfilUsuarioComponent {
 

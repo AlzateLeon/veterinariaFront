@@ -13,7 +13,7 @@ import { CarnetDetrasComponent } from '../carnet-detras/carnet-detras.component'
 @Component({
   selector: 'app-carnet-mascota',
   templateUrl: './carnet-mascota.component.html',
-  styleUrls: ['../../app.component.css'],
+  styleUrls: ['../../app.component.css', '../../css/principal.css'],
 })
 export class CarnetMascotaComponent {
 

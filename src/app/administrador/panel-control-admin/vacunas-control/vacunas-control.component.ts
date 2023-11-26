@@ -14,7 +14,7 @@ import { ConsultarVacunaComponent } from './consultar-vacuna/consultar-vacuna.co
 @Component({
   selector: 'app-vacunas-control',
   templateUrl: './vacunas-control.component.html',
-  styleUrls: ['../../../app.component.css']
+  styleUrls: ['../../../app.component.css', '../../../css/principal.css']
 })
 export class VacunasControlComponent {
 

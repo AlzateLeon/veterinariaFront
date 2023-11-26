@@ -12,6 +12,7 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   templateUrl: './crear-usuario.component.html',
   styleUrls: [
     '../../app.component.css',
+    '../../css/principal.css',
     '../../lib/flaticon/font/flaticon.css'
   ],
 })

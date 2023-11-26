@@ -8,7 +8,7 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 @Component({
   selector: 'app-editar-usuario',
   templateUrl: './editar-usuario.component.html',
-  styleUrls: ['../../../app.component.css'],
+  styleUrls: ['../../../app.component.css', '../../../css/principal.css'],
 })
 export class EditarUsuarioComponent {
   public usuarioDTO: UsuarioDTO;
