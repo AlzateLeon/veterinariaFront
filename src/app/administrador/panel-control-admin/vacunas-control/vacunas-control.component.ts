@@ -93,7 +93,9 @@ export class VacunasControlComponent {
   agregarVacuna() {
     //this.mascotaService.openModalAgregarMascota();
     // this.showModal = true;
-    const dialogoModal = this.dialog.open(AgregarVacunaComponent);
+    const dialogoModal = this.dialog.open(AgregarVacunaComponent, {
+      disableClose:true
+    });
 
     dialogoModal.afterClosed().subscribe(e => {
         this.consultarVacunas();
@@ -102,10 +104,15 @@ export class VacunasControlComponent {
   
   consultarVacuna(vacuna: any) {
 
-    this.dialog.open(ConsultarVacunaComponent, {
+    const dialogoModal=this.dialog.open(ConsultarVacunaComponent, {
       data: { vacuna: vacuna },
       width: '50%', 
+      disableClose:true
     });
+
+    dialogoModal.afterClosed().subscribe(e => {
+      this.consultarVacunas();
+  });
   }
   
   cancelarVacuna(vacuna: any) {}

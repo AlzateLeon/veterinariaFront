@@ -3,4 +3,5 @@ export class CreacionVacunaInDTO{
      tipoMascota: string;
      observaciones: string;
      unidadades: number;
+     idVacuna: number;
 }

@@ -7,6 +7,6 @@ export const environment = {
   function getApiUrl() {
     const protocol = window.location.protocol;
     const host = window.location.hostname;
-    return `${protocol}//${host}`;
+    return `${protocol}//${host}:8080`;
   }
   

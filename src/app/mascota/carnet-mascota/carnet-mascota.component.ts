@@ -23,7 +23,6 @@ export class CarnetMascotaComponent {
   public edadEditar: number;
   public razaEditar: string;
   public tipoEditar: string;
-  public observacionEditar: string;
 
   public imagen: string;
   public imagenOriginal: string;
@@ -119,7 +118,6 @@ export class CarnetMascotaComponent {
         const imagePreview = document.getElementById(
           'imagePreview'
         ) as HTMLImageElement;
-        // imagePreview.src = e.target?.res ult as string;
 
         this.imagen = e.target?.result as string;
         this.mascota.imagenMascota = this.imagen;
@@ -133,7 +131,11 @@ export class CarnetMascotaComponent {
     console.log('voltear tarjeta');
     this.volver();
 
-    const dialogoModal = this.dialog.open(CarnetDetrasComponent);
+    const dialogoModal = this.dialog.open(CarnetDetrasComponent,{
+      disableClose:true,
+      width: '400px',
+      height: '500px',
+    });
 
   }
 }

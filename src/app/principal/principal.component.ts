@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiciosVeterinariaService } from '../servicios-veterinaria.service';
+import { MatDialog } from '@angular/material/dialog';
+import { InicioUsuarioComponent } from '../usuario/inicio-usuario/inicio-usuario.component';
 
 @Component({
   selector: 'app-principal',
@@ -13,13 +15,19 @@ import { ServiciosVeterinariaService } from '../servicios-veterinaria.service';
 })
 export class PrincipalComponent {
   constructor(
+    public dialog: MatDialog,
     private router: Router,
     private serviciosVeterinariaService: ServiciosVeterinariaService
   ) {}
 
   navegarAInicioUser() {
     //this.router.navigate(['/app-inicio-usuario']); // 'otro' es la ruta que definiste en el enrutamiento
-    this.serviciosVeterinariaService.openIngresarModal();
+    // this.serviciosVeterinariaService.openIngresarModal();
+    const dialogoModal = this.dialog.open(InicioUsuarioComponent,{
+      width: '360px',
+      height: '550px',
+      disableClose:true
+    });
   }
 
   navegarACrearUsuarior() {

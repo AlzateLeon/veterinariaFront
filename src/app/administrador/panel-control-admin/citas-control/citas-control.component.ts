@@ -98,7 +98,8 @@ export class CitasControlComponent implements AfterViewInit {
   consultarCita(cita: CitaMedicaDTO) {
     const dialogoModal = this.dialog.open(ModalConsultarCitaComponent, {
       data: { cita: cita },
-      width: '50%', 
+      width: '50%',
+      disableClose: true,
     });
 
     dialogoModal.afterClosed().subscribe((e) => {
@@ -108,8 +109,8 @@ export class CitasControlComponent implements AfterViewInit {
 
   cancelarCita(cita: CitaMedicaDTO) {
     const dialogoModal = this.dialog.open(ModalCancelarCitaComponent, {
-      data: { cita: cita,
-              proceso: "control" },
+      data: { cita: cita, proceso: 'control' },
+      disableClose:true
     });
 
     dialogoModal.afterClosed().subscribe((e) => {
@@ -130,10 +131,10 @@ export class CitasControlComponent implements AfterViewInit {
   }
 
   agregarCita() {
-    const dialogoModal = this.dialog.open(AgregarCitaComponent,
-      {
-        data: { proceso: "citaControl" },
-      });
+    const dialogoModal = this.dialog.open(AgregarCitaComponent, {
+      data: { proceso: 'citaControl' },
+      disableClose:true
+    });
 
     dialogoModal.afterClosed().subscribe((e) => {
       this.citasForm.get('estado')?.setValue(null);

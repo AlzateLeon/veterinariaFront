@@ -7,7 +7,7 @@ import { ActivarCuentaDTO } from '../dtos/activar-cuenta.dto';
 import { EnvioCorreoInDTO } from '../dtos/envio-correo-in.dto';
 import { ConsultaUsuariosFiltrosOutDTO } from '../dtos/usuario/consulta-usuarios-filtros-out.dto';
 import { ConsultaUsuariosFiltrosInDTO } from '../dtos/usuario/consulta-usuarios-filtros-in.dto';
-import { environment } from 'src/environment/environment';
+import { environment } from 'src/environment/environment.prod';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +15,8 @@ import { environment } from 'src/environment/environment';
 export class UsuarioService {
   private usuarioData = new BehaviorSubject<any>(null);
   usuarioData$ = this.usuarioData.asObservable();
-  // private baseUrl = 'http://localhost:8080/veterinaria/usuario';
-  private baseUrl = environment.apiUrl + ':8080/veterinaria/usuario'; 
+  // private baseUrl = 'aaaaaaaaaaaaaa/veterinaria/usuario';
+  private baseUrl = environment.apiUrl + "/veterinaria/usuario"; 
 
   constructor(private http: HttpClient,) {}
 

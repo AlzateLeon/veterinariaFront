@@ -66,6 +66,7 @@ export class AgendaMascotasComponent {
   irCrear() {
     const dialogoModal = this.dialog.open(AgregarCitaComponent, {
       data: { proceso: 'citaUsuario' },
+      disableClose:true
     });
 
     dialogoModal.afterClosed().subscribe((e) => {
@@ -77,12 +78,14 @@ export class AgendaMascotasComponent {
     this.dialog.open(ModalConsultarCitaComponent, {
       data: { cita: cita },
       width: '50%',
+      disableClose:true
     });
   }
 
   cancelarCita(cita: CitaMedicaDTO) {
     const dialogoModal = this.dialog.open(ModalCancelarCitaComponent, {
       data: { cita: cita, proceso: 'usuario' },
+      disableClose:true
     });
 
     dialogoModal.afterClosed().subscribe((e) => {

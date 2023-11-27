@@ -62,7 +62,10 @@ export class ListaMascotasComponent implements AfterViewInit {
     mascota.clicked = !mascota.clicked;
     this.mascotaService.setMascotaData(mascota);
 
-    const dialogoModal = this.dialog.open(CarnetMascotaComponent);
+    const dialogoModal = this.dialog.open(CarnetMascotaComponent,
+      {
+        disableClose:true
+      });
 
     // dialogoModal.afterClosed().subscribe(e => {
     //     this.recargarListaMascotas();
@@ -93,7 +96,10 @@ export class ListaMascotasComponent implements AfterViewInit {
   agregarMascota() {
     //this.mascotaService.openModalAgregarMascota();
     // this.showModal = true;
-    const dialogoModal = this.dialog.open(AgregarMascotaComponent);
+    const dialogoModal = this.dialog.open(AgregarMascotaComponent,
+      {
+        disableClose:true
+      });
 
     dialogoModal.afterClosed().subscribe(e => {
         this.recargarListaMascotas();

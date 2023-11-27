@@ -43,7 +43,9 @@ export class CarnetDetrasComponent {
     console.log('voltear tarjeta');
     this.volver();
 
-    const dialogoModal = this.dialog.open(CarnetMascotaComponent);
+    const dialogoModal = this.dialog.open(CarnetMascotaComponent,{
+      disableClose:true
+    });
 
   }
 

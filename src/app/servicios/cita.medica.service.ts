@@ -7,14 +7,15 @@ import { Observable } from 'rxjs';
 import { ConsultasCitasUserOutDTO } from '../dtos/cita/consultas-citas-user-out.dto';
 import { CitaMedicaDTO } from '../dtos/cita/cita-medica.dto';
 import { ConsultaCitaFiltrosInDTO } from '../dtos/cita/consulta-cita-filtros-in.dto';
-import { environment } from 'src/environment/environment';
+import { environment } from 'src/environment/environment.prod';
+// import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CitaMedicaService {
   // private baseUrl = 'http://localhost:8080/veterinaria/cita';
-  private baseUrl = environment.apiUrl + ':8080/veterinaria/cita'; 
+  private baseUrl = environment.apiUrl + "/veterinaria/cita"; 
 
   constructor(private http: HttpClient, private dialog: MatDialog) {}
 

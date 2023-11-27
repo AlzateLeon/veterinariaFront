@@ -29,27 +29,26 @@
                         <div class="col-md-12" style="margin-bottom: 5px;">
                             <label style="margin-right: 10px; font-size: x-large;" for="edad">Edad</label>
                             <input class="input-right-aligned" type="text" id="edad" name="edad" formControlName="edad"
-                                required size="30" style="width: 60%;">
+                                size="30" style="width: 60%;">
                         </div>
 
                         <div class="col-md-12" style="margin-bottom: 5px;">
                             <label style="margin-right: 10px; font-size: x-large;" for="raza">Raza</label>
                             <input class="input-right-aligned" type="text" id="raza" name="raza" formControlName="raza"
-                                required size="30" style="width: 60%;">
+                                size="30" style="width: 60%;">
                         </div>
 
                         <div class="col-md-12" style="margin-bottom: 5px;">
                             <label style="margin-right: 10px; font-size: x-large;" for="tipo">Tipo Mascota</label>
                             <input class="input-right-aligned" type="text" id="tipo" name="tipo" formControlName="tipo"
-                                required size="30" style="width: 60%;">
+                                size="30" style="width: 60%;">
                         </div>
 
                         <div class="col-md-12">
                             <label style="margin-right: 10px; font-size: x-large;"
                                 for="observacion">Observaciones</label>
                             <textarea class="input-right-aligned" id="observacion" name="observacion"
-                                formControlName="observacion" required [(ngModel)]="observacionEditar"
-                                style="width: 60%;">
+                                formControlName="observacion" style="width: 60%;">
                             </textarea>
                         </div>
                     </div>
@@ -61,14 +60,13 @@
                 </div>
             </div>
 
-
         </form>
     </div>
-    <div class="row" style="justify-content: center;">
-        <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block" (click)="volver()">Cerrar</button>
-        <div style="width: 20px;"></div>
-        <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-            (click)="actualizarMascota()">Actualizar</button>
-    </div>
-
 </mat-dialog-content>
+
+<mat-dialog-actions style="justify-content: center;">
+    <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block" (click)="volver()">Cerrar</button>
+    <div style="width: 20px;"></div>
+    <button mat-button class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+        (click)="actualizarMascota()">Actualizar</button>
+</mat-dialog-actions>

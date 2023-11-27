@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { InicioUsuarioComponent } from './usuario/inicio-usuario/inicio-usuario.component';
 import { UsuarioDTO } from './dtos/usuario.dto';
 import { CreacionUsuarioOutDTO } from './dtos/creacion-usuario-out.dto';
-import { environment } from 'src/environment/environment';
+import { environment } from 'src/environment/environment.prod';
 
 
 @Injectable({
@@ -15,8 +15,8 @@ import { environment } from 'src/environment/environment';
 })
 export class ServiciosVeterinariaService {
 
-  // private baseUrl = 'http://localhost:8080/veterinaria'; // Reemplaza con la URL de tu backend
-  private baseUrl = environment.apiUrl + ':8080/veterinaria'; 
+  // private baseUrl = 'http://localhost:8080/veteasdasfasdfrinaria'; // Reemplaza con la URL de tu backend
+  private baseUrl = environment.apiUrl + "/veterinaria"; 
 
   constructor(private http: HttpClient,
     private dialog: MatDialog,
