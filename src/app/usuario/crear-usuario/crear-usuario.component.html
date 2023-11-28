@@ -39,6 +39,15 @@
               </div>
             </div>
 
+            <label for="celular" class="text-white">Celular*</label>
+            <div class="form-group">
+              <input type="text" class="form-control border-0 p-4" placeholder="Tu celular" required="required"
+                formControlName="celular" />
+              <div *ngIf="submitted && f['celular'].errors" class="text-black">
+                El celular es obligatorio.
+              </div>
+            </div>
+
             <label for="usuario" class="text-white">Nombre completo*</label>
             <div class="form-group">
               <input type="text" class="form-control border-0 p-4" placeholder="Tu Nombre" formControlName="nombre" />

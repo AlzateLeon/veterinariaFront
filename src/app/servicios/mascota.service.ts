@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { EditarUsuarioMascotaInDTO } from '../dtos/editar-usuario-mascota-in.dto';
+import { EditarUsuarioMascotaInDTO } from '../dtos/usuario/editar-usuario-mascota-in.dto';
 import { ConsultaMascotasUsuarioOutDTO } from '../dtos/mascota/consulta-mascotas-usuario-out.dto';
 import { MatDialog } from '@angular/material/dialog';
 import { AgregarMascotaComponent } from '../mascota/agregar-mascota/agregar-mascota.component';

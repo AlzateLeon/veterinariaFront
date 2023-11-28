@@ -1,10 +1,13 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
+import { UsuarioDTO } from 'src/app/dtos/usuario/usuario.dto';
 import { ConsultaUsuariosFiltrosInDTO } from 'src/app/dtos/usuario/consulta-usuarios-filtros-in.dto';
 import { ConsultaUsuariosFiltrosOutDTO } from 'src/app/dtos/usuario/consulta-usuarios-filtros-out.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CrearUsuarioControlComponent } from './crear-usuario-control/crear-usuario-control.component';
+import { ConsultarUsuarioControlComponent } from './consultar-usuario-control/consultar-usuario-control.component';
 
 @Component({
   selector: 'app-usuarios-control',
@@ -23,6 +26,7 @@ export class UsuariosControlComponent {
   mostrarTabla: boolean = false;
 
   constructor(
+    public dialog: MatDialog,
     private form: FormBuilder,
     private cdRef: ChangeDetectorRef,
     private usuarioService: UsuarioService,
@@ -55,11 +59,23 @@ export class UsuariosControlComponent {
   }
 
   consultarUser(user: UsuarioDTO){
+    this.dialog.open(ConsultarUsuarioControlComponent, {
+      data: { usuario: user },
+      width: '400px', 
+      disableClose:true
+    });
     
   }
 
   agregarUsuario(){
-    
+    const dialogoModal=this.dialog.open(CrearUsuarioControlComponent, {
+      width: '400px', 
+      disableClose:true
+    });
+
+    dialogoModal.afterClosed().subscribe(e => {
+      this.consultarUsuarios();
+  });
   }
 
 }

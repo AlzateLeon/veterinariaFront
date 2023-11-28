@@ -9,7 +9,7 @@ import { CreacionCitaInDTO } from 'src/app/dtos/cita/creacion-cita-in.dto';
 import { ConsultaMascotasUsuarioOutDTO } from 'src/app/dtos/mascota/consulta-mascotas-usuario-out.dto';
 import { MascotaDTO } from 'src/app/dtos/mascota/mascota.dto';
 import { ObjetoListaDTO } from 'src/app/dtos/objeto.lista.dto';
-import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
+import { UsuarioDTO } from 'src/app/dtos/usuario/usuario.dto';
 import { ConsultaUsuariosFiltrosInDTO } from 'src/app/dtos/usuario/consulta-usuarios-filtros-in.dto';
 import { ConsultaUsuariosFiltrosOutDTO } from 'src/app/dtos/usuario/consulta-usuarios-filtros-out.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';

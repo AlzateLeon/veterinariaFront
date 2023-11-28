@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { EditarUsuarioMascotaInDTO } from '../dtos/editar-usuario-mascota-in.dto';
+import { EditarUsuarioMascotaInDTO } from '../dtos/usuario/editar-usuario-mascota-in.dto';
 import { ResultadoDTO } from '../dtos/resultado.dto';
-import { ActivarCuentaDTO } from '../dtos/activar-cuenta.dto';
-import { EnvioCorreoInDTO } from '../dtos/envio-correo-in.dto';
+import { ActivarCuentaDTO } from '../dtos/activacion-cuenta/activar-cuenta.dto';
+import { EnvioCorreoInDTO } from '../dtos/activacion-cuenta/envio-correo-in.dto';
 import { ConsultaUsuariosFiltrosOutDTO } from '../dtos/usuario/consulta-usuarios-filtros-out.dto';
 import { ConsultaUsuariosFiltrosInDTO } from '../dtos/usuario/consulta-usuarios-filtros-in.dto';
 import { environment } from 'src/environment/environment.prod';

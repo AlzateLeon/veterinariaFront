@@ -5,7 +5,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { CitaMedicaDTO } from 'src/app/dtos/cita/cita-medica.dto';
-import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
+import { UsuarioDTO } from 'src/app/dtos/usuario/usuario.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { CitaMedicaService } from 'src/app/servicios/cita.medica.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';

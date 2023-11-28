@@ -41,15 +41,15 @@
       <div class="d-inline-flex align-items-center">
         <div class="d-inline-flex flex-column text-center pr-3 border-right">
           <h6 class="text-white">Horarios de Atención</h6>
-          <p class="m-0 text-white">8.00AM - 5.00PM</p>
+          <p class="m-0 text-white">{{horario}}</p>
         </div>
         <div class="d-inline-flex flex-column text-center px-3 border-right">
           <h6 class="text-white">Coreo</h6>
-          <p class="m-0 text-white">vvet@gmail.com</p>
+          <p class="m-0 text-white">{{correo}}</p>
         </div>
         <div class="d-inline-flex flex-column text-center pl-3">
           <h6 class="text-white">Telefono</h6>
-          <p class="m-0 text-white">+318 345 6789</p>
+          <p class="m-0 text-white">{{telefono}}</p>
         </div>
       </div>
     </div>
@@ -222,11 +222,10 @@
         <div class="col-md-4 mb-5">
           <h5 class="text-primary mb-4">Contactenos</h5>
           <p>
-            <i class="fa fa-map-marker-alt mr-2"></i>123 Street, ignacio perez
-            108
+            <i class="fa fa-map-marker-alt mr-2"></i>{{ubicacion}}
           </p>
-          <p><i class="fa fa-phone-alt mr-2"></i>+312 345 67890</p>
-          <p><i class="fa fa-envelope mr-2"></i>info@gmail.com</p>
+          <p><i class="fa fa-phone-alt mr-2"></i>{{telefono}}</p>
+          <p><i class="fa fa-envelope mr-2"></i>{{correo}}</p>
           <div class="d-flex justify-content-start mt-4">
             <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px"
               href="#"><i class="fab fa-twitter"></i></a>

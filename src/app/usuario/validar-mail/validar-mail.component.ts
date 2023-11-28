@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ActivarCuentaDTO } from 'src/app/dtos/activar-cuenta.dto';
+import { ActivarCuentaDTO } from 'src/app/dtos/activacion-cuenta/activar-cuenta.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 

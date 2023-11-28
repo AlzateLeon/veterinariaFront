@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { creacionMascotaInDTO } from 'src/app/dtos/mascota/creacion-mascota-in.dto';
-import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
+import { UsuarioDTO } from 'src/app/dtos/usuario/usuario.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { MascotaService } from 'src/app/servicios/mascota.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';

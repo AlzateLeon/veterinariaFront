@@ -33,6 +33,9 @@ import { CustomSnackbarComponent } from './utiles/snackbar/CustomSnackbarCompone
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { InfoBoxComponent } from './utiles/infoBox/InfoBoxComponent ';
 import { ConsultarVacunaComponent } from './administrador/panel-control-admin/vacunas-control/consultar-vacuna/consultar-vacuna.component';
+import { SistemaControlComponent } from './administrador/panel-control-admin/sistema-control/sistema-control.component';
+import { CrearUsuarioControlComponent } from './administrador/panel-control-admin/usuarios-control/crear-usuario-control/crear-usuario-control.component';
+import { ConsultarUsuarioControlComponent } from './administrador/panel-control-admin/usuarios-control/consultar-usuario-control/consultar-usuario-control.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +64,9 @@ import { ConsultarVacunaComponent } from './administrador/panel-control-admin/va
     CustomSnackbarComponent,
     InfoBoxComponent,
     ConsultarVacunaComponent,
+    SistemaControlComponent,
+    CrearUsuarioControlComponent,
+    ConsultarUsuarioControlComponent,
   ],
   imports: [
     AppRoutingModule,

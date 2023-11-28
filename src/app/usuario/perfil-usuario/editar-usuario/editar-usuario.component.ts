@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EditarUsuarioMascotaInDTO } from 'src/app/dtos/editar-usuario-mascota-in.dto';
-import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
+import { EditarUsuarioMascotaInDTO } from 'src/app/dtos/usuario/editar-usuario-mascota-in.dto';
+import { UsuarioDTO } from 'src/app/dtos/usuario/usuario.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 
@@ -23,6 +23,7 @@ export class EditarUsuarioComponent {
 
   public CorreoEditar: string;
   public NombreEditar: string;
+  public celularEditar: string;
 
   constructor(
     private form: FormBuilder,
@@ -31,6 +32,7 @@ export class EditarUsuarioComponent {
   ) {
     this.editForm = this.form.group({
       nombre: [null],
+      celular: [null],
       correo: [
         null,
         [
@@ -44,6 +46,7 @@ export class EditarUsuarioComponent {
     this.imagen = this.usuarioDTO.imagenUser;
     this.CorreoEditar = this.usuarioDTO.correo;
     this.NombreEditar = this.usuarioDTO.nombre;
+    this.celularEditar = this.usuarioDTO.celular;
   }
 
   public get f() {
@@ -55,7 +58,8 @@ export class EditarUsuarioComponent {
 
     if (
       this.editForm.get('correo')?.value === null &&
-      this.editForm.get('nombre')?.value === null
+      this.editForm.get('nombre')?.value === null &&
+      this.editForm.get('celular')?.value === null 
     ) {
       this.serviciosVeterinariaService.openInfoModal(
         'Para editar la información debe ingresar los nuevos datos'
@@ -77,6 +81,7 @@ export class EditarUsuarioComponent {
     editarIn.nombre = this.editForm.get('nombre')?.value;
     editarIn.idUsuario = this.usuarioDTO.idUser;
     editarIn.imagen = this.imagen;
+    editarIn.celular =  this.editForm.get('celular')?.value;
 
     //se edita el user
     this.usuarioService.editarUsuario(editarIn).subscribe((resultado) => {

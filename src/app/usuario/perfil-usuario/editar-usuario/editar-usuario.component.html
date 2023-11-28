@@ -15,6 +15,11 @@
                     {{ mensajeCorreo }}
                 </div>
             </div>
+            <div class="form-group">
+                <h4 for="celular">Celular</h4>
+                <input type="email" id="celular" name="celular" formControlName="celular"
+                    class="form-control" style="width: 100%;" [(ngModel)]="celularEditar">
+            </div>
         </form>
         <button (click)="editarUsuario()" class="btn btn-lg btn-primary px-3 d-none d-lg-block">
             Guardar Cambios

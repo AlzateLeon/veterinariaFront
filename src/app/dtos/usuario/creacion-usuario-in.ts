@@ -6,4 +6,5 @@ export class CreacionUsuarioIn {
   userName: string;
   correo: string;
   cedula: string;
+  celular: string;
 }

@@ -1,44 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { EnvioCorreoInDTO } from 'src/app/dtos/activacion-cuenta/envio-correo-in.dto';
 import { CreacionUsuarioIn } from 'src/app/dtos/usuario/creacion-usuario-in';
 import { CreacionUsuarioOutDTO } from 'src/app/dtos/usuario/creacion-usuario-out.dto';
-import { EnvioCorreoInDTO } from 'src/app/dtos/activacion-cuenta/envio-correo-in.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 
 @Component({
-  selector: 'app-crear-usuario',
-  templateUrl: './crear-usuario.component.html',
-  styleUrls: [
-    '../../app.component.css',
-    '../../css/principal.css',
-    '../../lib/flaticon/font/flaticon.css'
-  ],
+  selector: 'app-crear-usuario-control',
+  templateUrl: './crear-usuario-control.component.html',
+  styleUrls: ['../../../../app.component.css', '../../../../css/principal.css'],
 })
-export class CrearUsuarioComponent {
-  public creacionUsuarioIn: CreacionUsuarioIn;
-
-  public userForm: FormGroup;
+export class CrearUsuarioControlComponent {
+  public crearUsuarioForm: FormGroup;
 
   public submitted: boolean = false;
 
   public mensajeCorreo: string;
 
-  public creacionUsuarioOutDTO: CreacionUsuarioOutDTO;
+  public creacionUsuarioIn: CreacionUsuarioIn;
 
   loading: boolean = false; // Variable para controlar la visibilidad del símbolo de carga
-  showOverlay: boolean = false; // Variable para controlar la visibilidad de la capa de fondo
+  showOverlay: boolean = false;
+
+  public creacionUsuarioOutDTO: CreacionUsuarioOutDTO;
 
   constructor(
-    private router: Router,
     private form: FormBuilder,
-    private usuarioService: UsuarioService,
-    private serviciosVeterinariaService: ServiciosVeterinariaService
+    public usuarioService: UsuarioService,
+    private serviciosVeterinariaService: ServiciosVeterinariaService,
+    // modal
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<CrearUsuarioControlComponent>
   ) {
-    this.userForm = this.form.group({
-      nombre: [],
-      celular: [],
+    this.crearUsuarioForm = this.form.group({
+      nombre: ['', Validators.required],
+      celular: ['', Validators.required],
       correo: [
         '',
         [
@@ -54,18 +52,18 @@ export class CrearUsuarioComponent {
     });
   }
 
-  ngOnInit() {
-    console.log(this.userForm);
-  }
-
   volver() {
-    this.router.navigate(['/']);
+    this.dialogRef.close();
   }
 
-  crearNuevoUsuario() {
+  public get f() {
+    return this.crearUsuarioForm.controls;
+  }
+
+  agregarUsuario() {
     this.submitted = true;
-    this.userForm.updateValueAndValidity();
-    if (this.userForm.invalid) {
+    this.crearUsuarioForm.updateValueAndValidity();
+    if (this.crearUsuarioForm.invalid) {
       if (this.f['correo'].hasError('required')) {
         this.mensajeCorreo = 'El correo es requerido.';
       }
@@ -75,18 +73,24 @@ export class CrearUsuarioComponent {
 
       return;
     }
+
     if (this.validarContrasenas()) {
       if (
-        this.userForm.get('correo')?.value !== null &&
-        this.userForm.get('password')?.value !== null &&
-        this.userForm.get('Cpassword')?.value !== null
+        this.crearUsuarioForm.get('correo')?.value !== null &&
+        this.crearUsuarioForm.get('password')?.value !== null &&
+        this.crearUsuarioForm.get('Cpassword')?.value !== null
       ) {
         this.creacionUsuarioIn = new CreacionUsuarioIn();
-        this.creacionUsuarioIn.nombre = this.userForm.get('nombre')?.value;
-        this.creacionUsuarioIn.password = this.userForm.get('password')?.value;
-        this.creacionUsuarioIn.cedula = this.userForm.get('cedula')?.value;
-        this.creacionUsuarioIn.correo = this.userForm.get('correo')?.value;
-        this.creacionUsuarioIn.celular = this.userForm.get('celular')?.value;
+        this.creacionUsuarioIn.nombre =
+          this.crearUsuarioForm.get('nombre')?.value;
+        this.creacionUsuarioIn.password =
+          this.crearUsuarioForm.get('password')?.value;
+        this.creacionUsuarioIn.cedula =
+          this.crearUsuarioForm.get('cedula')?.value;
+        this.creacionUsuarioIn.correo =
+          this.crearUsuarioForm.get('correo')?.value;
+        this.creacionUsuarioIn.celular =
+          this.crearUsuarioForm.get('celular')?.value;
         this.creacionUsuarioIn.tipoUsuarioEnum = 'DUENO_MASCOTA';
         this.loading = true; // Mostrar el símbolo de carga
 
@@ -102,9 +106,8 @@ export class CrearUsuarioComponent {
               this.loading = false; // Ocultar el símbolo de carga
               this.showOverlay = false; // Ocultar la capa de fondo semitransparente
             } else {
-
               let envioIn: EnvioCorreoInDTO = new EnvioCorreoInDTO();
-              envioIn.correo = this.userForm.get('correo')?.value;
+              envioIn.correo = this.crearUsuarioForm.get('correo')?.value;
               envioIn.idUser = this.creacionUsuarioOutDTO.idUser;
               this.usuarioService
                 .mandarCorreoValidacion(envioIn)
@@ -136,36 +139,32 @@ export class CrearUsuarioComponent {
     }
   }
 
-  limpiarCampos() {
-    // this.userForm.get('usuario')?.setValue('');
-    this.userForm.get('nombre')?.setValue('');
-    this.userForm.get('correo')?.setValue('');
-    this.userForm.get('cedula')?.setValue('');
-    this.userForm.get('password')?.setValue('');
-    this.userForm.get('Cpassword')?.setValue('');
-    this.userForm.get('celular')?.setValue('');
-    this.submitted = false;
-  }
-
   validarContrasenas(): boolean {
     console.log(
-      this.userForm.get('password')?.value +
+      this.crearUsuarioForm.get('password')?.value +
         ' ' +
-        this.userForm.get('Cpassword')?.value
+        this.crearUsuarioForm.get('Cpassword')?.value
     );
 
     if (
-      this.userForm.get('password')?.value !== null &&
-      this.userForm.get('Cpassword')?.value !== null &&
-      this.userForm.get('password')?.value ===
-        this.userForm.get('Cpassword')?.value
+      this.crearUsuarioForm.get('password')?.value !== null &&
+      this.crearUsuarioForm.get('Cpassword')?.value !== null &&
+      this.crearUsuarioForm.get('password')?.value ===
+        this.crearUsuarioForm.get('Cpassword')?.value
     ) {
       return true;
     }
     return false;
   }
 
-  public get f() {
-    return this.userForm.controls;
+  limpiarCampos() {
+    // this.userForm.get('usuario')?.setValue('');
+    this.crearUsuarioForm.get('nombre')?.setValue('');
+    this.crearUsuarioForm.get('correo')?.setValue('');
+    this.crearUsuarioForm.get('cedula')?.setValue('');
+    this.crearUsuarioForm.get('password')?.setValue('');
+    this.crearUsuarioForm.get('Cpassword')?.setValue('');
+    this.crearUsuarioForm.get('celular')?.setValue('');
+    this.submitted = false;
   }
 }

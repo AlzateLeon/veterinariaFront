@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { ConsultaMascotasUsuarioOutDTO } from 'src/app/dtos/mascota/consulta-mascotas-usuario-out.dto';
 import { EditarMascotaInDTO } from 'src/app/dtos/mascota/editar-mascota-in.dto';
 import { MascotaDTO } from 'src/app/dtos/mascota/mascota.dto';
-import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
+import { UsuarioDTO } from 'src/app/dtos/usuario/usuario.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { MascotaService } from 'src/app/servicios/mascota.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';

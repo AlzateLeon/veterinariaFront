@@ -56,6 +56,13 @@
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </button>
                     </li>
+                    <li>
+                        <button (click)="mostrarsistema()" class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                            style="width: 100%;">
+                            Sistema
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                        </button>
+                    </li>
                 
                     <!-- Agrega más opciones de menú según sea necesario -->
                 </ul>
@@ -77,6 +84,10 @@
 
                 <div *ngIf="mostrarUsuariosB">
                     <app-usuarios-control></app-usuarios-control>
+                </div>
+
+                <div *ngIf="mostrarSistemaB">
+                    <app-sistema-control></app-sistema-control>
                 </div>
 
             </div>

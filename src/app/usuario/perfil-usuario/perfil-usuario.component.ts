@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EditarUsuarioMascotaInDTO } from 'src/app/dtos/editar-usuario-mascota-in.dto';
-import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
+import { EditarUsuarioMascotaInDTO } from 'src/app/dtos/usuario/editar-usuario-mascota-in.dto';
+import { UsuarioDTO } from 'src/app/dtos/usuario/usuario.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { MascotaService } from 'src/app/servicios/mascota.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';

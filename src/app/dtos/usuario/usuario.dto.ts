@@ -1,4 +1,4 @@
-import { ResultadoDTO } from "./resultado.dto";
+import { ResultadoDTO } from "../resultado.dto";
 
 export class UsuarioDTO extends ResultadoDTO{
 
@@ -12,5 +12,6 @@ export class UsuarioDTO extends ResultadoDTO{
   cantidadMascotas: number;
   imagenUser: string;
   citasPendientes: number;
+  celular: string;
 
 }

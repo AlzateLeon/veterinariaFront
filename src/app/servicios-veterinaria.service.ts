@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CreacionUsuarioIn } from './dtos/creacion-usuario-in';
+import { CreacionUsuarioIn } from './dtos/usuario/creacion-usuario-in';
 import { ModalInfoComponent } from './utiles/modal-info/modal-info.component';
 import { MatDialog } from '@angular/material/dialog';
 import { InicioUsuarioComponent } from './usuario/inicio-usuario/inicio-usuario.component';
-import { UsuarioDTO } from './dtos/usuario.dto';
-import { CreacionUsuarioOutDTO } from './dtos/creacion-usuario-out.dto';
+import { UsuarioDTO } from './dtos/usuario/usuario.dto';
+import { CreacionUsuarioOutDTO } from './dtos/usuario/creacion-usuario-out.dto';
 import { environment } from 'src/environment/environment.prod';
 
 

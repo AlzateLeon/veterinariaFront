@@ -2,9 +2,9 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CreacionUsuarioIn } from 'src/app/dtos/creacion-usuario-in';
+import { CreacionUsuarioIn } from 'src/app/dtos/usuario/creacion-usuario-in';
 import { ConsultaMascotasUsuarioOutDTO } from 'src/app/dtos/mascota/consulta-mascotas-usuario-out.dto';
-import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
+import { UsuarioDTO } from 'src/app/dtos/usuario/usuario.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
 import { MascotaService } from 'src/app/servicios/mascota.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
@@ -35,12 +35,11 @@ export class InicioUsuarioComponent {
   constructor(
     private router: Router,
     private form: FormBuilder,
-    // private modalInfoComponent: ModalInfoComponent,
-    private serviciosVeterinariaService: ServiciosVeterinariaService,
-    public dialogRef: MatDialogRef<ModalInfoComponent>,
     public usuarioService: UsuarioService,
     private mascotaService: MascotaService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<ModalInfoComponent>,
+    private serviciosVeterinariaService: ServiciosVeterinariaService,
   ) {
     this.userForm = this.form.group({
       password: ['', Validators.required],
@@ -100,9 +99,9 @@ export class InicioUsuarioComponent {
                 this.mascotaService
                   .consultarMascotasUsuario(this.usuarioDTO.idUser)
                   .subscribe((resultado) => {
+
                     if (resultado.exitoso) {
                       this.consultaMascotasUsuarioOutDTO = resultado;
-                      //this.mascotas = this.consultaMascotasUsuarioOutDTO.mascotas;
                       this.limpiarCampos();
                       this.closeDialog();
                       this.submitted = false;
@@ -111,6 +110,7 @@ export class InicioUsuarioComponent {
                         this.consultaMascotasUsuarioOutDTO
                       );
                       this.router.navigate(['/perfil-usuario']);
+                      
                     } else {
                       this.serviciosVeterinariaService.openInfoModal(
                         this.consultaMascotasUsuarioOutDTO.mensaje

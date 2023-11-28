@@ -3,4 +3,5 @@ export class EditarUsuarioMascotaInDTO{
     correo: string;
     nombre: string;
     imagen: string;
+    celular: string;
 }

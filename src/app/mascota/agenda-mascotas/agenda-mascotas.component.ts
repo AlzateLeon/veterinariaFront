@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AgregarCitaComponent } from './agregar-cita/agregar-cita.component';
 import { CitaMedicaService } from 'src/app/servicios/cita.medica.service';
-import { UsuarioDTO } from 'src/app/dtos/usuario.dto';
+import { UsuarioDTO } from 'src/app/dtos/usuario/usuario.dto';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { ConsultasCitasUserOutDTO } from 'src/app/dtos/cita/consultas-citas-user-out.dto';
 import { ServiciosVeterinariaService } from 'src/app/servicios-veterinaria.service';
